@@ -1,0 +1,75 @@
+html,
+body {
+	height:100%;
+}
+
+body {
+	font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+#side-nav {
+	background-color: #000;
+	padding-top: 18px;
+	width:71px;
+	color:#fff;
+	position:fixed;
+	top:0;
+	bottom:0;
+}
+
+#side-nav a {
+	font-size: 1.8rem;
+	color:#555;
+}
+#side-nav a:hover {
+	color:#52affb;
+}
+
+#side-nav ul {
+	list-style-type: none;
+	padding: 20px;
+	margin: 0px;
+}
+#side-nav li {
+	padding-bottom: 8px;
+}
+
+#main {
+	position:absolute;
+	padding-left: 35px;
+	left:71px;
+	top:16px;
+	bottom:0;
+	right:0;
+	min-width: 500px;
+}
+
+#top-bar {
+	position: absolute;
+	top: 0;
+	height: 16px;
+	left:71px;
+	right:0px;
+	border-bottom:#000 solid 1px;
+	min-width: 500px;
+}
+
+#wrapper {
+	height:100%;
+	width: 100%;
+}
+
+#search-field {
+	width:300px;
+	height: 30px;
+	border-radius: 5px;
+	border:1px solid #000;
+	font-size: 1.1rem;
+}
+
+img.portal-logo-list {
+	max-width: 50px;
+ 	max-height:35px;
+}

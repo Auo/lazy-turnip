@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>lazy-turnip</title>
+		<link rel="stylesheet" href="css/index.css"/>
+		<link rel="stylesheet" href="css/font-awesome.css"/>
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<div id="side-nav">
+				<ul>
+					<li><a href="#" id="home" class="nav"><i class="fa fa-home"></i></a></li>
+					<li><a href="#" id="list" class="nav"><i class="fa fa-list"></i></a></li>
+					<li><a href="#" id="search" class="nav"><i class="fa fa-search"></i></a></li>
+				</ul>
+			</div>
+			<div id="top-bar"></div>
+			<div id="main"></div>
+		</div>
+	</body>
+	<script>
+		const $ = jQuery = require('jquery')
+		const app = require('./lib/app')
+
+		//used by the views, knockout
+		const ko = require('knockout')
+		const homeViewModel = require('./viewModels/homeViewModel')(app)
+		const searchViewModel = require('./viewModels/searchViewModel')(app)
+		const listViewModel = require('./viewModels/listViewModel')(app)
+
+		listViewModel.init()
+		searchViewModel.init()
+
+		homeViewModel.init(() => {
+			//re-init when folder changes.
+			searchViewModel.init()
+			listViewModel.init()
+		})
+
+		app.on('rendered', rendered => { $('#main').html(rendered) })
+
+		const showContent = (view) => { app.emit('view-selected', view)	}
+
+		$(() => {
+			app.storage.getConfig(config => {
+				if(app.storage.missingConfig(config)) {
+					showContent('home')
+				} else {
+					showContent('search')
+				}
+
+				$('.nav').on('click', event => {
+					event.preventDefault()
+					app.storage.getConfig(config => {
+						if(app.storage.missingConfig(config)) {
+							return
+						} else {
+							showContent(event.currentTarget.id)
+						}
+					})
+				})
+			})
+		})
+	</script>
+</html>

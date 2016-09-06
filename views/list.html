@@ -1,0 +1,33 @@
+<div id="list-root">
+
+	<table>
+		<tbody data-bind="foreach: installedAddons">
+			<tr>
+				<td data-bind="text: name"></td>
+				<td data-bind="text: version"></td>
+				<td><img class="portal-logo-list" data-bind="attr: {src: 'images/' + portal + '.png'}"/></td>
+				<td><button data-bind="click: $parent.removeAddon"><i class="fa fa-trash"></i> remove </button></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<button data-bind="click: checkForUpdates, visible: checkingForUpdates() == false"><i class="fa fa-refresh"></i> check for updates </button>
+<div data-bind="visible: checkingForUpdates() == true"><i class="fa fa-refresh fa-spin"></i> checking for updates</div>
+
+<div data-bind="visible: possibleUpdates().length > 0">
+	<table>
+		<tbody data-bind="foreach: possibleUpdates">
+			<tr>
+				<td data-bind="text: name"></td>
+			</tr>
+		</tbody>
+	</table>
+	<button data-bind="click: updateAddons, visible: updating() == false"><i class="fa fa-arrow-up"></i> update </button>
+	<div data-bind="visible: updating() == true"><i class="fa fa-refresh fa-spin"></i> updating addons, hang tight!<div>
+</div>
+</div>
+
+
+<script>
+	ko.applyBindings(listViewModel, document.getElementById('list-root'))
+</script>

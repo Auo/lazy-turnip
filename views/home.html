@@ -1,0 +1,19 @@
+<div id="home-root">
+	<h1>lazy-turnip</h1>
+
+	<div id="application-information">
+		<p>This is a tool for managing addons in World of Warcraft. You can get addons from wowinterface and curse.</p>
+	</div>
+
+	<div data-bind="visible: isConfigMissing() == true">
+		<button data-bind="click: selectFolder"><i class="fa fa-folder"></i>select addon folder</button>
+	</div>
+
+	<div data-bind="visible: isConfigMissing() == false">
+		<button data-bind="click: selectFolder"><i class="fa fa-folder"></i> change addon folder</button>
+	</div>
+</div>
+<script>
+
+ko.applyBindings(homeViewModel, document.getElementById('home-root'))
+</script>
