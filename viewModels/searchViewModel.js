@@ -23,6 +23,10 @@ const SearchViewModel = function(app) {
 		this.verifyInstalledAddons()
 	})
 
+	app.on('delete-completed', data => {
+		this.verifyInstalledAddons()
+	})
+
 	this.verifyInstalledAddons = function() {
 		this.getInstalledAddons(() => {
 			for(let i = 0; i < this.searchResults().length; i++) {

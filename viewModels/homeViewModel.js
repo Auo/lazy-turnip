@@ -1,4 +1,5 @@
 const ko = require('knockout')
+const {shell} = require('electron')
 
 const HomeViewModel = function(app) {
 	var self = this
@@ -23,12 +24,21 @@ const HomeViewModel = function(app) {
 		}
 	}
 
+	this.openFolder = function() {
+
+		app.storage.getConfig(config=> {
+			shell.openItem(config.addonfolder)
+		})
+
+	}
+
 	this.init = function(cb) {
 		app.storage.getConfig(config => {
 			self.isConfigMissing(app.storage.missingConfig(config))
 		})
 		this.folderChangeCallback = cb
 	}
+
 }
 
 module.exports =  function(app) { return new HomeViewModel(app) }

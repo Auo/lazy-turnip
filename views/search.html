@@ -16,22 +16,20 @@
 	</thead>
 	<tbody data-bind="foreach: searchResults">
 		<tr>
+			<td><img style="width:32px; height:32px; border-radius:2px; display:block;" data-bind="attr: {src: image}"/></td>
+			<td data-bind="text: category"></td>
 			<td data-bind="text: name"></td>
 			<td data-bind="text: creator"></td>
 			<td data-bind="text: downloads"></td>
-			<!-- <td data-bind="text: portal"></td> -->
 			<td><img class="portal-logo-list" data-bind="attr: {src: 'images/' + portal + '.png'}"/></td>
 			<td>
-
 				<div data-bind="visible: installed() == false">
 					<form data-bind="submit:$parent.installAddon, visible: installing() == false">
 						<button type="submit"><i class="fa fa-cloud-download"></i></button>
 					</form>
 					<div data-bind="visible: installing() == true"><i class="fa fa-refresh fa-spin"></i></div>
 				</div>
-
 				<div data-bind="visible: installed() == true"><i class="fa fa-check"></i></div>
-
 			</td>
 		</tr>
 	</tbody>
