@@ -6,15 +6,14 @@
 	</div>
 
 	<div data-bind="visible: isConfigMissing() == true">
-		<button data-bind="click: selectFolder"><i class="fa fa-folder"></i>select addon folder</button>
+		<button data-bind="click: selectFolder"><i class="fa fa-folder"></i>Select folder</button>
 	</div>
 
 
 	<div data-bind="visible: isConfigMissing() == false">
-		<button data-bind="click: selectFolder"><i class="fa fa-folder"></i> change addon folder</button>
+		<button data-bind="click: selectFolder"><i class="fa fa-folder"></i> Change folder</button>
 
-		<br />
-		<button data-bind="click: openFolder"><i class="fa fa-folder"></i> browser addon folder</button>
+		<button data-bind="click: openFolder"><i class="fa fa-folder"></i> Open folder</button>
 	</div>
 
 

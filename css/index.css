@@ -1,6 +1,10 @@
+/* https://coolors.co/2b2d42-ff715b-eaebed-ffffff-6e8898 */
+
 html,
 body {
 	height:100%;
+	background-color: #EAEBED;
+	color:#6E8898;
 }
 
 body {
@@ -10,20 +14,19 @@ body {
 }
 
 #side-nav {
-	background-color: #000;
+	background-color: #2B2D42;
 	padding-top: 18px;
 	width:71px;
-	color:#fff;
 	position:absolute;
 	top:0;
 	bottom:0;
 	left:0;
-
 }
 
 #side-nav a {
 	font-size: 1.5rem;
-	color:#555;
+	color:#FF715B;
+	margin-left: 0.3rem;
 }
 #side-nav a:hover {
 	color:#ecf0f1;
@@ -42,13 +45,13 @@ body {
 	position:absolute;
 	padding-left: 35px;
 	left:71px;
-	top:16px;
+	/*top:16px;*/
+	top:0px;
 	bottom:0;
 	right:0;
 	min-width: 500px;
 	overflow-y: scroll;
 	overflow-x:hidden;
-
 }
 
 #top-bar {
@@ -73,6 +76,20 @@ body {
 	border:1px solid #000;*/
 	font-size: 1.1rem;
 	padding:5px;
+}
+
+button {
+	display:inline-block;
+	background-color:#2B2D42;
+	border-radius: 3px;
+	padding:10px;
+	border: 0px;
+	margin: 5px;
+	color:#6E8898;
+	font-size: 0.8em;
+}
+button:hover {
+	color:#FF715B;
 }
 
 img.portal-logo-list {

@@ -1,8 +1,8 @@
 <div id="list-root">
+	<h1>Addons</h1>
 
-	<button data-bind="visible: scanning() == false,click: scanAddonFolder"><i class="fa fa-hdd-o"></i> scan local folder for addons</button>
-	<div data-bind="visible: scanning() == true"><i class="fa fa-refresh fa-spin"></i> scanning your addon folder for unlisted addons!</div>
-
+	<div data-bind="visible: installedAddons().length > 0">
+	<p>Below are installed addons</p>
 
 	<table>
 		<tbody data-bind="foreach: installedAddons">
@@ -10,27 +10,38 @@
 				<td data-bind="text: name"></td>
 				<td data-bind="text: version"></td>
 				<td><img class="portal-logo-list" data-bind="attr: {src: 'images/' + portal + '.png'}"/></td>
-				<td><button data-bind="click: $parent.removeAddon"><i class="fa fa-trash"></i> remove </button></td>
+				<td><button data-bind="click: $parent.removeAddon"><i class="fa fa-trash"></i> Remove </button></td>
 			</tr>
 		</tbody>
 	</table>
 
-	<button data-bind="click: checkForUpdates, visible: checkingForUpdates() == false"><i class="fa fa-refresh"></i> check for updates </button>
-<div data-bind="visible: checkingForUpdates() == true"><i class="fa fa-refresh fa-spin"></i> checking for updates</div>
+	<button data-bind="click: checkForUpdates, visible: checkingForUpdates() == false"><i class="fa fa-refresh"></i> Check for updates </button>
 
-<div data-bind="visible: possibleUpdates().length > 0">
-	<table>
-		<tbody data-bind="foreach: possibleUpdates">
-			<tr>
-				<td data-bind="text: name"></td>
-			</tr>
-		</tbody>
-	</table>
-	<button data-bind="click: updateAddons, visible: updating() == false"><i class="fa fa-arrow-up"></i> update </button>
-	<div data-bind="visible: updating() == true"><i class="fa fa-refresh fa-spin"></i> updating addons, hang tight!<div>
-</div>
+	<div data-bind="visible: checkingForUpdates() == true">
+		<i class="fa fa-refresh fa-spin"></i> Checking for updates
+	</div>
+
 </div>
 
+	<div data-bind="visible: possibleUpdates().length > 0">
+		<table>
+			<tbody data-bind="foreach: possibleUpdates">
+				<tr>
+					<td data-bind="text: name"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<button data-bind="click: updateAddons, visible: updating() == false"><i class="fa fa-arrow-up"></i> Update </button>
+		<div data-bind="visible: updating() == true"><i class="fa fa-refresh fa-spin"></i> Updating addons</div>
+	</div>
+
+	<h2>Scan local</h2>
+	<p> If you have installed addons manually, scan the folder to add them to the program</p>
+	<button data-bind="visible: scanning() == false, click: scanAddonFolder"><i class="fa fa-hdd-o"></i> Scan local folder for addons</button>
+	<div data-bind="visible: scanning() == true"><i class="fa fa-refresh fa-spin"></i> Scanning your addon folder</div>
+
+</div>
 
 <script>
 	ko.applyBindings(listViewModel, document.getElementById('list-root'))
