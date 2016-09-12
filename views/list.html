@@ -1,5 +1,9 @@
 <div id="list-root">
 
+	<button data-bind="visible: scanning() == false,click: scanAddonFolder"><i class="fa fa-hdd-o"></i> scan local folder for addons</button>
+	<div data-bind="visible: scanning() == true"><i class="fa fa-refresh fa-spin"></i> scanning your addon folder for unlisted addons!</div>
+
+
 	<table>
 		<tbody data-bind="foreach: installedAddons">
 			<tr>

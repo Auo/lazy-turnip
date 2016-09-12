@@ -5,6 +5,7 @@ const ListViewModel = function(app) {
 	this.possibleUpdates = ko.observableArray([])
 	this.checkingForUpdates = ko.observable(false)
 	this.updating = ko.observable(false)
+	this.scanning = ko.observable(false)
 
 		app.on('installation-completed', data => {
 			this.getInstalledAddons()
@@ -33,6 +34,19 @@ const ListViewModel = function(app) {
 				manager.listAddons(addons => {
 					this.installedAddons.removeAll()
 					addons.forEach(add => { this.installedAddons.push(add) })
+				})
+			})
+		}
+
+		this.scanAddonFolder = function() {
+			this.scanning(true)
+			app.getManager(manager => {
+				if(!manager) { return }
+				manager.scanAddonFolder((err, info) => {
+					this.getInstalledAddons()
+					this.scanning(false)
+					console.log(err, ' error scanning')
+					console.log(info, ' info from scanning')
 				})
 			})
 		}

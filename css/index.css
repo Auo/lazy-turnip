@@ -14,17 +14,19 @@ body {
 	padding-top: 18px;
 	width:71px;
 	color:#fff;
-	position:fixed;
+	position:absolute;
 	top:0;
 	bottom:0;
+	left:0;
+
 }
 
 #side-nav a {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
 	color:#555;
 }
 #side-nav a:hover {
-	color:#52affb;
+	color:#ecf0f1;
 }
 
 #side-nav ul {
@@ -44,6 +46,9 @@ body {
 	bottom:0;
 	right:0;
 	min-width: 500px;
+	overflow-y: scroll;
+	overflow-x:hidden;
+
 }
 
 #top-bar {
@@ -64,9 +69,10 @@ body {
 #search-field {
 	width:300px;
 	height: 30px;
-	border-radius: 5px;
-	border:1px solid #000;
+	/*border-radius: 5px;
+	border:1px solid #000;*/
 	font-size: 1.1rem;
+	padding:5px;
 }
 
 img.portal-logo-list {

@@ -104,7 +104,7 @@ function onClosed() {
 
 function createMainWindow() {
 	const win = new electron.BrowserWindow({
-		width: 1280,
+		width: 857,
 		height: 720,
 		icon:'images/turnip.ico'
 	});
