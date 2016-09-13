@@ -1,10 +1,16 @@
 const ko = require('knockout')
 
 const SearchViewModel = function(app) {
+
 	app.on('search-completed', addons => {
 		addons.forEach(add => {
 				add.installing = ko.observable(false)
 				add.installed = ko.observable(false)
+
+				add.infoOpen = ko.observable(false)
+				add.infoLoading = ko.observable(false)
+				add.info = ko.observable({})
+
 				this.searchResults.push(add)
 			 })
 			 this.verifyInstalledAddons()
@@ -26,6 +32,27 @@ const SearchViewModel = function(app) {
 	app.on('delete-completed', data => {
 		this.verifyInstalledAddons()
 	})
+
+	this.openInfo = function() {
+		var data = this
+
+		if(data.infoOpen()) {
+			data.infoOpen(false)
+			return
+		}
+
+		// if(data.info() != null) {
+		// 		data.infoOpen(!data.infoOpen())
+		// } else {
+			data.infoLoading(true)
+			self.getAddonInfo(data, (info) => {
+					data.infoOpen(!data.infoOpen())
+					data.infoLoading(false)
+					data.info(info)
+					console.log(info)
+			})
+		// }
+	}
 
 	this.verifyInstalledAddons = function() {
 		this.getInstalledAddons(() => {
@@ -66,6 +93,17 @@ const SearchViewModel = function(app) {
 				if(cb != null) {
 					cb()
 				}
+			})
+		})
+	}
+
+	this.getAddonInfo = function(addon, cb) {
+		app.getManager(manager => {
+			if(!manager) { return }
+			// console.log(addon)
+			manager.portals[addon.portal].getAddonInfo(addon, (err, info) => {
+				if(err) { console.log(err, ' error getting addon info') }
+				return cb(info)
 			})
 		})
 	}

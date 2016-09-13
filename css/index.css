@@ -96,3 +96,25 @@ img.portal-logo-list {
 	max-width: 50px;
  	max-height:35px;
 }
+
+#search-result-list{
+	margin-top:50px;
+}
+.addon-info-item, .addon-detailed-info {
+	float:left;
+	height: auto;
+	width: 100%;
+}
+
+.addon-info, .addon-info span, .addon-info-status, .addon-expand-link {
+	display: block;
+	float:left;
+}
+.addon-info, .addon-info span, .addon-info-status {
+	margin-top:5px;
+	margin-left:5px;
+}
+.addon-info-name {
+	font-size: bold;
+	font-size: 1.2em;
+}
