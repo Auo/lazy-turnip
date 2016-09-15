@@ -5,77 +5,28 @@
 	<input placeholder="addon name" type="text" data-bind="textInput: search" id="search-field"/>
 </form>
 
-<!-- <table>
-	<thead data-bind="visible: searchResults().length > 0">
-		<tr>
-			<td>Name</td>
-			<td>Downloads</td>
-			<td>Portal</td>
-		</tr>
-	</thead>
-	<tbody data-bind="foreach: searchResults">
-		<tr>
-			<tr>
-				<td>
-					<div class="list-item-expand-link">
-						<div data-bind="visible: infoLoading() == false">
-							<button data-bind="click: $parent.openInfo"><i data-bind="attr: {class: infoOpen() == false ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}" class="fa fa-chevron-up"></i></button>
-						</div>
-						<div data-bind="visible: infoLoading() == true"><i class="fa fa-refresh fa-spin"></i></div>
-					</div>
-				</td>
-				<td data-bind="text: name"></td>
-				<td data-bind="text: downloads"></td>
-				<td>
-					<div data-bind="visible: installed() == false">
-						<form data-bind="submit:$parent.installAddon, visible: installing() == false">
-							<button type="submit"><i class="fa fa-cloud-download"></i> Download</button>
-						</form>
-						<div data-bind="visible: installing() == true"><i class="fa fa-refresh fa-spin"></i></div>
-					</div>
-					<div data-bind="visible: installed() == true"><i class="fa fa-hdd-o"></i></div>
-				</td>
-			</tr>
-			<tr data-bind="visible: infoOpen()">
-				<td><img style="width:20px; height:20px; border-radius:2px; display:block;" data-bind="attr: {src: image}"/></td>
-				<td data-bind="text: category"></td>
-
-				<td data-bind="text: info().version"></td>
-
-
-			</tr>
-		</tr>
-	</tbody>
-</table> -->
-
 	<div id="search-result-list" data-bind="foreach: { data: searchResults}">
 		<div  class="addon-info-item">
-			<div class="addon-expand-link">
-				<div data-bind="visible: infoLoading() == false">
-					<button data-bind="click: $parent.openInfo"><i data-bind="attr: {class: infoOpen() == false ? 'fa fa-chevron-up' : 'fa fa-chevron-down'}" class="fa fa-chevron-up"></i></button>
-				</div>
-				<div data-bind="visible: infoLoading() == true"><i class="fa fa-refresh fa-spin"></i></div>
-			</div>
-			<div class="addon-info">
-				<span class="addon-info-name" data-bind="text: name"></span>
-				<span data-bind="text: downloads"></span>
-			</div>
 			<div class="addon-info-status">
 				<div data-bind="visible: installed() == false">
-					<button data-bind="click:$parent.installAddon, visible: installing() == false"><i class="fa fa-cloud-download"></i> Download</button>
-					<div data-bind="visible: installing() == true"><i class="fa fa-refresh fa-spin"></i></div>
+					<button data-bind="click:$parent.installAddon, visible: installing() == false"><i class="fa fa-cloud-download"></i></button>
+					<div class="update-panel-button" data-bind="visible: installing() == true"><i class="fa fa-refresh fa-spin"></i></div>
 				</div>
-				<div data-bind="visible: installed() == true"><i class="fa fa-hdd-o"></i></div>
+				<div class="update-panel-button" data-bind="visible: installed() == true"><i class="fa fa-hdd-o"></i></div>
 			</div>
 
-			<div data-bind="visible: infoOpen()" class="addon-detailed-info">
-				HELLO
-				<span data-bind="text: info().version"></span>
+			<div class="addon-info">
+				<span class="addon-info-name" data-bind="text: name"></span>
+				<span class="external-link"><a data-bind="click: $parent.showMoreInfo"><i class="fa fa-info-circle"></i> info</a>
 			</div>
+			<div class="addon-info">
+				<span>Downloads: </span><span data-bind="text: downloads"></span>
+				<span>Author: </span><span data-bind="text: creator"></span>
 		</div>
 	</div>
 </div>
 
+<span class="external-link"><a><i class="fa fa-info-circle"></i> info</a>
 <script>
 	ko.applyBindings(searchViewModel, document.getElementById('search-root'))
 </script>

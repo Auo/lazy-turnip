@@ -78,7 +78,7 @@ body {
 	padding:5px;
 }
 
-button {
+button, .update-panel-button {
 	display:inline-block;
 	background-color:#2B2D42;
 	border-radius: 3px;
@@ -87,10 +87,24 @@ button {
 	margin: 5px;
 	color:#6E8898;
 	font-size: 0.8em;
+	cursor: pointer;
 }
-button:hover {
+button:hover, .update-panel-button:hover {
 	color:#FF715B;
 }
+
+
+.update-panel-button {
+	cursor:no-drop;
+	width: 14px;
+	height: 14px;
+	text-align: center;
+}
+.update-panel-button i {
+	position:relative;
+	top:-2px;
+}
+
 
 img.portal-logo-list {
 	max-width: 50px;
@@ -104,17 +118,36 @@ img.portal-logo-list {
 	float:left;
 	height: auto;
 	width: 100%;
+	min-width: 600px;
 }
 
-.addon-info, .addon-info span, .addon-info-status, .addon-expand-link {
+
+.addon-info-status {
 	display: block;
 	float:left;
+	position:relative;
+	top: 10px;
 }
-.addon-info, .addon-info span, .addon-info-status {
+.addon-info  {
+	display: block;
+	float:left;
+	width: 80%;
+	min-width: 350px;
+}
+
+.addon-info, .addon-info-status {
 	margin-top:5px;
 	margin-left:5px;
 }
 .addon-info-name {
 	font-size: bold;
 	font-size: 1.2em;
+}
+
+/*.external-link a{
+	text-decoration: none;
+}*/
+.external-link:hover {
+	cursor: pointer !important;
+	color:#FF715B;
 }

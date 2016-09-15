@@ -1,4 +1,5 @@
 const ko = require('knockout')
+const shell = require('electron').shell
 
 const SearchViewModel = function(app) {
 
@@ -7,9 +8,9 @@ const SearchViewModel = function(app) {
 				add.installing = ko.observable(false)
 				add.installed = ko.observable(false)
 
-				add.infoOpen = ko.observable(false)
-				add.infoLoading = ko.observable(false)
-				add.info = ko.observable({})
+				// add.infoOpen = ko.observable(false)
+				// add.infoLoading = ko.observable(false)
+				// add.info = ko.observable({})
 
 				this.searchResults.push(add)
 			 })
@@ -33,26 +34,29 @@ const SearchViewModel = function(app) {
 		this.verifyInstalledAddons()
 	})
 
-	this.openInfo = function() {
-		var data = this
-
-		if(data.infoOpen()) {
-			data.infoOpen(false)
-			return
-		}
-
-		// if(data.info() != null) {
-		// 		data.infoOpen(!data.infoOpen())
-		// } else {
-			data.infoLoading(true)
-			self.getAddonInfo(data, (info) => {
-					data.infoOpen(!data.infoOpen())
-					data.infoLoading(false)
-					data.info(info)
-					console.log(info)
-			})
-		// }
+	this.showMoreInfo = function() {
+		shell.openExternal(this.link)
 	}
+	// this.openInfo = function() {
+	// 	var data = this
+	//
+	// 	if(data.infoOpen()) {
+	// 		data.infoOpen(false)
+	// 		return
+	// 	}
+	//
+	// 	// if(data.info() != null) {
+	// 	// 		data.infoOpen(!data.infoOpen())
+	// 	// } else {
+	// 		data.infoLoading(true)
+	// 		self.getAddonInfo(data, (info) => {
+	// 				data.infoOpen(!data.infoOpen())
+	// 				data.infoLoading(false)
+	// 				data.info(info)
+	// 				console.log(info)
+	// 		})
+	// 	// }
+	// }
 
 	this.verifyInstalledAddons = function() {
 		this.getInstalledAddons(() => {
@@ -97,16 +101,16 @@ const SearchViewModel = function(app) {
 		})
 	}
 
-	this.getAddonInfo = function(addon, cb) {
-		app.getManager(manager => {
-			if(!manager) { return }
-			// console.log(addon)
-			manager.portals[addon.portal].getAddonInfo(addon, (err, info) => {
-				if(err) { console.log(err, ' error getting addon info') }
-				return cb(info)
-			})
-		})
-	}
+	// this.getAddonInfo = function(addon, cb) {
+	// 	app.getManager(manager => {
+	// 		if(!manager) { return }
+	// 		// console.log(addon)
+	// 		manager.portals[addon.portal].getAddonInfo(addon, (err, info) => {
+	// 			if(err) { console.log(err, ' error getting addon info') }
+	// 			return cb(info)
+	// 		})
+	// 	})
+	// }
 
 	this.init = function() {
 			this.verifyInstalledAddons()
