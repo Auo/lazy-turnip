@@ -1,9 +1,9 @@
 <div id="search-root">
-<h1>Search</h1>
+	<h1>Search</h1>
 
-<form data-bind="submit: searchPortals">
-	<input placeholder="addon name" type="text" data-bind="textInput: search" id="search-field"/>
-</form>
+	<form data-bind="submit: searchPortals">
+		<input placeholder="addon name" type="text" data-bind="textInput: search" id="search-field"/>
+	</form>
 
 	<div id="search-result-list" data-bind="foreach: { data: searchResults}">
 		<div  class="addon-info-item">
@@ -17,7 +17,7 @@
 
 			<div class="addon-info">
 				<span class="addon-info-name" data-bind="text: name"></span>
-				<span class="external-link"><a data-bind="click: $parent.showMoreInfo"><i class="fa fa-info-circle"></i> info</a>
+				<span class="external-link"><a data-bind="click: $parent.showMoreInfo, attr:{'data-tooltip': 'visit ' + portal}"><i class="fa fa-info-circle"></i> info</a>
 			</div>
 			<div class="addon-info">
 				<span>Downloads: </span><span data-bind="text: downloads"></span>
@@ -26,7 +26,7 @@
 	</div>
 </div>
 
-<span class="external-link"><a><i class="fa fa-info-circle"></i> info</a>
+<!-- <span class="external-link" ><a data-tooltip="POW!"><i class="fa fa-info-circle"></i> info</a> -->
 <script>
 	ko.applyBindings(searchViewModel, document.getElementById('search-root'))
 </script>
