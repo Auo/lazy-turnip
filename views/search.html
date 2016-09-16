@@ -2,7 +2,10 @@
 	<h1>Search</h1>
 
 	<form data-bind="submit: searchPortals">
-		<input placeholder="addon name" type="text" data-bind="textInput: search" id="search-field"/>
+		<div id="search-field">
+			<span><i class="fa fa-search"></i></span>
+		<input placeholder="search" type="text" data-bind="textInput: search" />
+	</div>
 	</form>
 
 	<div id="search-result-list" data-bind="foreach: { data: searchResults}">
@@ -20,8 +23,9 @@
 				<span class="external-link"><a data-bind="click: $parent.showMoreInfo, attr:{'data-tooltip': 'visit ' + portal}"><i class="fa fa-info-circle"></i> info</a>
 			</div>
 			<div class="addon-info">
-				<span>Downloads: </span><span data-bind="text: downloads"></span>
-				<span>Author: </span><span data-bind="text: creator"></span>
+				<span class="addon-info-header">Downloads: </span><span data-bind="text: downloads"></span>
+				<span class="addon-info-header">Author: </span><span data-bind="text: creator"></span>
+				<span class="addon-info-header">Category: </span><span data-bind="text: category"></span>
 		</div>
 	</div>
 </div>

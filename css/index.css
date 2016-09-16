@@ -45,7 +45,6 @@ body {
 	position:absolute;
 	padding-left: 35px;
 	left:71px;
-	/*top:16px;*/
 	top:0px;
 	bottom:0;
 	right:0;
@@ -69,11 +68,27 @@ body {
 	width: 100%;
 }
 
-#search-field {
+#search-field input{
 	width:300px;
 	height: 30px;
 	font-size: 1.1rem;
 	padding:5px;
+	padding-left:25px;
+	position:relative;
+	left: -15px;
+	border-radius: 5px;
+	border: 1px solid #fff;
+	color:#2B2D42;
+}
+#search-field input:focus {
+	border: 1px solid #FF715B;
+	outline:none;
+}
+#search-field span {
+	color:#FF715B;
+	position:relative;
+	z-index:1000;
+	left:10px;
 }
 
 button, .update-panel-button {
@@ -119,6 +134,7 @@ img.portal-logo-list {
 	height: auto;
 	width: 100%;
 	min-width: 700px;
+	margin-bottom: 10px;
 }
 
 
@@ -144,13 +160,22 @@ img.portal-logo-list {
 	font-size: 1.2em;
 }
 
+.addon-info-header {
+	font-weight: bold;
+}
+
 .external-link:hover {
 	cursor: pointer !important;
 	color:#FF715B;
 }
 
+#update-addon-pane {
+	margin-top:50px;
+}
 
-
+#installed-addon-pane {
+	overflow:hidden;
+}
 
 
 
@@ -201,3 +226,4 @@ img.portal-logo-list {
 [data-tooltip]:hover:after{
   visibility: visible;
 }
+/* end of tooltip */
