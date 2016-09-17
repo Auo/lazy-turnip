@@ -13,7 +13,7 @@
   "scripts": {
     "test": "xo",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --all --icon=images\\turnip.ico",
+    "build": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --all --icon=images\\logo.ico",
     "build-backup": "electron-packager . --out=dist --app-version=%npm_package_version% --prune --asar --overwrite --all",
     "build-windows": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --platform=win32 --arch=ia32 --icon=images\\turnip.ico",
     "build-installer-windows": "build --win --ia32"
