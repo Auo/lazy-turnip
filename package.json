@@ -53,6 +53,10 @@
   },
   "build": {
     "appId": "your.id",
-    "app-category-type": "your.app.category.type"
+    "app-category-type": "your.app.category.type",
+    "win": {
+      "icon":"images\\logo-large.ico",
+      "loadingGif":"images\\installing.gif"
+    }
   }
 }

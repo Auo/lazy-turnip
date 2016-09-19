@@ -15,6 +15,8 @@ const SearchViewModel = function(app) {
 				this.searchResults.push(add)
 			 })
 			 this.verifyInstalledAddons()
+
+			 self.isSearching(false)
 	})
 
 	app.on('installation-completed', data => {
@@ -76,6 +78,7 @@ const SearchViewModel = function(app) {
 	this.search = ko.observable('')
 	this.searchResults = ko.observableArray([])
 	this.installedAddons = ko.observableArray([])
+	this.isSearching = ko.observable(false)
 
 	this.installAddon = function() {
 		var data = this
@@ -85,6 +88,7 @@ const SearchViewModel = function(app) {
 
 	this.searchPortals = function(data, event) {
 		this.searchResults.removeAll()
+		self.isSearching(true)
 		app.emit('search-for-addon', this.search())
 	}
 

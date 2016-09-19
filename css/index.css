@@ -21,6 +21,15 @@ body {
 	margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+		background-color: #6E8898;
+}
+
 #side-nav {
 	background-color: #2B2D42;
 	padding-top: 18px;
@@ -29,6 +38,7 @@ body {
 	top:0;
 	bottom:0;
 	left:0;
+	overflow: hidden;
 }
 
 #side-nav img {
@@ -62,7 +72,7 @@ body {
 	bottom:0;
 	right:0;
 	min-width: 500px;
-	overflow-y: scroll;
+	/*overflow-y: scroll;*/
 	overflow-x:hidden;
 }
 
