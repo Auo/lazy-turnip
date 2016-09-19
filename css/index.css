@@ -23,6 +23,7 @@ body {
 
 ::-webkit-scrollbar {
     width: 6px;
+		height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -32,7 +33,7 @@ body {
 
 #side-nav {
 	background-color: #2B2D42;
-	padding-top: 18px;
+	padding-top: 25px;
 	width:71px;
 	position:absolute;
 	top:0;
@@ -79,11 +80,27 @@ body {
 #top-bar {
 	position: absolute;
 	top: 0;
-	height: 16px;
-	left:71px;
-	right:0px;
-	border-bottom:#000 solid 1px;
-	min-width: 500px;
+	height: 25px;
+	min-width:100%;
+	-webkit-app-region:drag;
+	z-index: 9999;
+}
+
+#top-bar-windows {
+ float:right;
+}
+
+#top-bar-windows ul {
+	list-style-type: none;
+	margin:2px;
+}
+#top-bar-windows ul li {
+	display: inline-block;
+	margin-right: 7px;
+	-webkit-app-region:no-drag;
+}
+#top-bar-windows ul li span:hover {
+	color:#FF715B;
 }
 
 #wrapper {

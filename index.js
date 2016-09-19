@@ -1,6 +1,7 @@
 'use strict';
 const electron = require('electron');
 const path = require('path')
+const os = require('os')
 const app = electron.app;
 
 
@@ -79,15 +80,6 @@ function handleSquirrelEvent() {
 
 
 
-
-
-
-
-
-
-
-
-
 // adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
 
@@ -107,7 +99,10 @@ function createMainWindow() {
 		width: 857,
 		height: 720,
 		icon: path.join(__dirname,'images','logo.ico'),
-    // frame:false
+    minWidth:200,
+    minHeight:150,
+    titleBarStyle: 'hidden',
+    frame: os.platform() !== 'win32'
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);

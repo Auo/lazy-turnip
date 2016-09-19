@@ -9,6 +9,15 @@
 
 	<body>
 		<div id="wrapper">
+			<div id="top-bar" data-bind="visible: showbar">
+				<div id="top-bar-windows">
+					<ul>
+						<li><span data-bind="click: minimize"><i class="fa fa-minus"></i></span></li>
+						<li><span data-bind="click: maximize"><i class="fa fa-square-o"></i></span></li>
+						<li><span data-bind="click: quit"><i class="fa fa-close"></i></span></li>
+					</ul>
+				</div>
+			</div>
 			<div id="side-nav">
 				<img src="images/logos/logo-187x187.png">
 				<ul>
@@ -17,7 +26,7 @@
 					<li><a href="#" id="home" class="nav"><i class="fa fa-cog"></i></a></li>
 				</ul>
 			</div>
-			<!-- <div id="top-bar"></div> -->
+
 			<div id="main"></div>
 		</div>
 	</body>
@@ -30,6 +39,10 @@
 		const homeViewModel = require('./viewModels/homeViewModel')(app)
 		const searchViewModel = require('./viewModels/searchViewModel')(app)
 		const listViewModel = require('./viewModels/listViewModel')(app)
+		const titlebarViewModel = require('./viewModels/titlebarViewModel')(app)
+
+
+		ko.applyBindings(titlebarViewModel, document.getElementById('top-bar'))
 
 		listViewModel.init()
 		searchViewModel.init()
