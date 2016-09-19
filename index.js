@@ -106,7 +106,7 @@ function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: 857,
 		height: 720,
-		icon:'images/turnip.ico'
+		icon:'images/logo.ico'
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
