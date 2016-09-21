@@ -8,10 +8,6 @@ const SearchViewModel = function(app) {
 				add.installing = ko.observable(false)
 				add.installed = ko.observable(false)
 
-				// add.infoOpen = ko.observable(false)
-				// add.infoLoading = ko.observable(false)
-				// add.info = ko.observable({})
-
 				this.searchResults.push(add)
 			 })
 			 this.verifyInstalledAddons()
@@ -39,26 +35,6 @@ const SearchViewModel = function(app) {
 	this.showMoreInfo = function() {
 		shell.openExternal(this.link)
 	}
-	// this.openInfo = function() {
-	// 	var data = this
-	//
-	// 	if(data.infoOpen()) {
-	// 		data.infoOpen(false)
-	// 		return
-	// 	}
-	//
-	// 	// if(data.info() != null) {
-	// 	// 		data.infoOpen(!data.infoOpen())
-	// 	// } else {
-	// 		data.infoLoading(true)
-	// 		self.getAddonInfo(data, (info) => {
-	// 				data.infoOpen(!data.infoOpen())
-	// 				data.infoLoading(false)
-	// 				data.info(info)
-	// 				console.log(info)
-	// 		})
-	// 	// }
-	// }
 
 	this.verifyInstalledAddons = function() {
 		this.getInstalledAddons(() => {

@@ -1,12 +1,9 @@
 const ko = require('knockout')
 const os = require('os')
 const remote = require('electron').remote;
-console.log(require('electron').remote)
 
 const TitlebarViewModel = function(app) {
   this.showbar = ko.observable(os.platform() === 'win32')
-
-  // this.showbar(false)
 
   this.minimize = function() {
     const window = remote.getCurrentWindow()

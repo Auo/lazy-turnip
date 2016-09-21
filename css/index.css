@@ -1,13 +1,18 @@
 /* https://coolors.co/2b2d42-ff715b-eaebed-ffffff-6e8898 */
 
+/* https://coolors.co/2b2d42-B46DC7-eaebed-ffffff-6e8898 */
+
 /*
 #2B2D42
-#FF715B
+#FF715B  / B46DC7
 #EAEBED
 #FFFFFF
 #6E8898
 */
-
+@font-face {
+	font-family: 'Lato';
+	src:url('../fonts/Lato-Regular.ttf') format('truetype');
+}
 html,
 body {
 	height:100%;
@@ -16,7 +21,7 @@ body {
 }
 
 body {
-	font-family: 'Lucida Grande', 'Segoe UI', sans-serif;
+	font-family: 'Lato','Lucida Grande', 'Segoe UI', sans-serif;
 	padding: 0;
 	margin: 0;
 }
@@ -49,7 +54,7 @@ body {
 
 #side-nav a {
 	font-size: 1.5rem;
-	color:#FF715B;
+	color:#B46DC7;
 	margin-left: 0.3rem;
 }
 #side-nav a:hover {
@@ -100,7 +105,7 @@ body {
 	-webkit-app-region:no-drag;
 }
 #top-bar-windows ul li span:hover {
-	color:#FF715B;
+	color:#B46DC7;
 }
 
 #wrapper {
@@ -121,11 +126,11 @@ body {
 	color:#2B2D42;
 }
 #search-field input:focus {
-	border: 1px solid #FF715B;
+	border: 1px solid #B46DC7;
 	outline:none;
 }
 #search-field span {
-	color:#FF715B;
+	color:#B46DC7;
 	position:relative;
 	z-index:1000;
 	left:10px;
@@ -143,7 +148,7 @@ button, .update-panel-button {
 	cursor: pointer;
 }
 button:hover, .update-panel-button:hover {
-	color:#FF715B;
+	color:#B46DC7;
 }
 
 
@@ -206,7 +211,7 @@ img.portal-logo-list {
 
 .external-link:hover {
 	cursor: pointer !important;
-	color:#FF715B;
+	color:#B46DC7;
 }
 
 #update-addon-pane {

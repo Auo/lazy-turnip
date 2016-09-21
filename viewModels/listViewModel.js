@@ -19,7 +19,6 @@ const ListViewModel = function(app) {
 			this.possibleUpdates.removeAll()
 			data.forEach(add => { this.possibleUpdates.push(add) })
 			this.checkingForUpdates(false)
-			console.log(data, ' addons that can be updated')
 		})
 
 		app.on('update-addons-completed', updatedAddons => {
