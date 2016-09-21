@@ -32,6 +32,10 @@ const HomeViewModel = function(app) {
 
 	}
 
+	this.visitProject = function() {
+		shell.openExternal('https://github.com/auo/lazy-turnip')
+	}
+
 	this.init = function(cb) {
 		app.storage.getConfig(config => {
 			self.isConfigMissing(app.storage.missingConfig(config))

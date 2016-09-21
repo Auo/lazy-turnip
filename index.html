@@ -10,7 +10,7 @@
 	<body>
 		<div id="wrapper">
 			<div id="top-bar" data-bind="visible: showbar">
-				<div id="top-bar-windows">
+				<div id="top-bar-windows" class="disable-select">
 					<ul>
 						<li><span data-bind="click: minimize"><i class="fa fa-minus"></i></span></li>
 						<li><span data-bind="click: maximize"><i class="fa fa-square-o"></i></span></li>
@@ -18,7 +18,7 @@
 					</ul>
 				</div>
 			</div>
-			<div id="side-nav">
+			<div id="side-nav" class="disable-select">
 				<img src="images/logos/logo-187x187.png">
 				<ul>
 					<li><a href="#" id="search" class="nav"><i class="fa fa-search"></i></a></li>

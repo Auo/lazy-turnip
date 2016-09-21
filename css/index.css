@@ -53,7 +53,7 @@ body {
 }
 
 #side-nav a {
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	color:#B46DC7;
 	margin-left: 0.3rem;
 }
@@ -78,7 +78,6 @@ body {
 	bottom:0;
 	right:0;
 	min-width: 500px;
-	/*overflow-y: scroll;*/
 	overflow-x:hidden;
 }
 
@@ -222,6 +221,32 @@ img.portal-logo-list {
 	overflow:hidden;
 }
 
+#additional-info {
+	position:absolute;
+	bottom:5px;
+	left: -16px;
+	width:100%;
+	text-align: center;
+}
+#additional-info ul {
+
+	margin:0 auto;
+	margin:0px;
+	padding:0px;
+	list-style-type: none;
+}
+#additional-info ul a {
+	display: inline-block;
+	text-decoration: none;
+	color:inherit;
+}
+#additional-info ul a:hover {
+	color: #B46DC7;
+}
+.disable-select {
+	user-select:none;
+	-webkit-user-select:none;
+}
 
 
 /* Hover style */

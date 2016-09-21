@@ -22,7 +22,6 @@ const ListViewModel = function(app) {
 		})
 
 		app.on('update-addons-completed', updatedAddons => {
-			console.log(updatedAddons, 'updated addons')
 			this.possibleUpdates.removeAll()
 			this.getInstalledAddons()
 		})
@@ -44,8 +43,6 @@ const ListViewModel = function(app) {
 				manager.scanAddonFolder((err, info) => {
 					this.getInstalledAddons()
 					this.scanning(false)
-					console.log(err, ' error scanning')
-					console.log(info, ' info from scanning')
 				})
 			})
 		}
@@ -56,21 +53,17 @@ const ListViewModel = function(app) {
 
 		this.checkForUpdates = function() {
 			this.checkingForUpdates(true)
-			console.log('start update, check for them.')
 			app.emit('check-for-updates')
 		}
 
 		this.updateAddons = function() {
 			this.updating(true)
-			console.log('time to install!')
 			app.emit('update-addons', this.possibleUpdates())
 		}
-
 
 		this.init = function() {
 				this.getInstalledAddons()
 		}
-
 }
 
 module.exports =  function(app) { return new ListViewModel(app) }
