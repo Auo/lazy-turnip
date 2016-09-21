@@ -1,4 +1,4 @@
-![alt text](https://github.com/auo/lazy-turnip/images/logos/logo-187x187.png "lazy-turnip")
+![alt text](https://github.com/Auo/lazy-turnip/blob/master/images/logos/logo-187x187.png "lazy-turnip")
 
 
 # Lazy Turnip
