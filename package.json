@@ -1,22 +1,22 @@
 {
   "name": "lazy-turnip",
-  "productName": "lazy-turnip",
+  "productName": "Lazy Turnip",
   "version": "0.0.1",
-  "description": "an application to handle installation of world of warcraft addons",
+  "description": "An application to handle installation of world of warcraft addons",
   "license": "MIT",
   "repository": "auo/lazy-turnip",
   "author": {
     "name": "Andreas Lindgren",
     "email": "",
-    "url": ""
+    "url": "https://github.com/auo/lazy-turnip"
   },
   "scripts": {
     "test": "xo",
     "start": "electron .",
     "build": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --all --icon=images\\logo.ico",
     "build-backup": "electron-packager . --out=dist --app-version=%npm_package_version% --prune --asar --overwrite --all",
-    "build-windows": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --platform=win32 --arch=ia32 --icon=images\\turnip.ico",
-    "build-installer-windows": "build --win --ia32"
+    "build-windows": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --platform=win32 --arch=x64 --icon=images\\turnip.ico",
+    "build-installer-windows": "build --win --x64"
   },
   "files": [
     "index.js",
@@ -52,8 +52,12 @@
     ]
   },
   "build": {
-    "appId": "your.id",
-    "app-category-type": "your.app.category.type",
+    "appId": "com.squirrel.auo.turnip",
+    "category": "public.app-category.utilities",
+    "app-category-type": "public.app-category.utilities",
+    "mac": {
+        "icon":"images\\logo-large.icns"
+    },
     "win": {
       "icon":"images\\logo-large.ico",
       "loadingGif":"images\\installing.gif"
