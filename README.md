@@ -1,4 +1,4 @@
-![alt text](https://github.com/Auo/lazy-turnip/blob/master/images/logos/logo-187x187.png "lazy-turnip")
+<img src="https://auo.github.io/images/lazy-turnip/logo.png" alt="logo"/>
 
 
 # Lazy Turnip
@@ -17,6 +17,13 @@ I wanted something that could get addons from both wowinterface and curse, and I
 
 ## How does it do it?
 It creates a .json file in the addons folder, this file keep track of your addons.
+
+## Images
+<img src="https://auo.github.io/images/lazy-turnip/search.png" alt="search" style="width: 200px;"/>
+<img src="https://auo.github.io/images/lazy-turnip/installed.png" alt="installed" style="width: 200px;"/>
+<img src="https://auo.github.io/images/lazy-turnip/settings.png" alt="settings" style="width: 200px;"/>
+
+
 
 
 ## Usage
