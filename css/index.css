@@ -247,7 +247,9 @@ img.portal-logo-list {
 	user-select:none;
 	-webkit-user-select:none;
 }
-
+#version-info {
+	font-size: 0.5em;
+}
 
 /* Hover style */
 [data-tooltip] {

@@ -6,6 +6,7 @@ const HomeViewModel = function(app) {
 	var {dialog} = require('electron').remote
 	this.isConfigMissing = ko.observable(false)
 	this.folderChangeCallback = null
+	this.version = ko.observable(require('electron').remote.app.getVersion())
 
 	this.selectFolder = function() {
 		const directories = dialog.showOpenDialog({ properties: ['openDirectory'] })
