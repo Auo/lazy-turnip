@@ -16,7 +16,8 @@
     "build": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --all --icon=images\\logo.ico",
     "build-backup": "electron-packager . --out=dist --app-version=%npm_package_version% --prune --asar --overwrite --all",
     "build-windows": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --platform=win32 --arch=x64 --icon=images\\turnip.ico",
-    "build-installer-windows": "build --win --x64"
+    "build-installer-windows": "build --win --x64",
+    "pack-build": "npm run build-windows && npm run build-installer-windows"
   },
   "files": [
     "index.js",
@@ -32,6 +33,7 @@
     "electron-debug": "^1.0.0",
     "electron-json-storage": "^2.0.0",
     "electron-reload": "^1.0.2",
+    "electron-squirrel-startup": "^1.0.0",
     "jquery": "^3.1.0",
     "jsonfile": "^2.3.1",
     "knockout": "^3.4.0",
@@ -56,11 +58,11 @@
     "category": "public.app-category.utilities",
     "app-category-type": "public.app-category.utilities",
     "mac": {
-        "icon":"images\\logo-large.icns"
+      "icon": "images\\logo-large.icns"
     },
     "win": {
-      "icon":"images\\logo-large.ico",
-      "loadingGif":"images\\installing.gif"
+      "icon": "images\\logo-large.ico",
+      "loadingGif": "images\\installing.gif"
     }
   }
 }
