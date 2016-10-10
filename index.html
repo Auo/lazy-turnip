@@ -9,20 +9,31 @@
         <img src="https://auo.github.io/images/lazy-turnip/logo-large.png" />
         <div id="btn-holder">
             <a href="https://github.com/auo/lazy-turnip/" class="btn">Github</a>
-            <a href="http://update.lazyturnip.com/" class="btn">Download</a>
+            <a href="http://update.lazyturnip.com/" class="btn" id="download">Download</a>
         </div>
         <p>
             Lazy turnip is an open source addon manager for World of Warcraft!
             It allows you to search curse and wowinterface for your favorite addons.
         </p>
 
-        <p>How about you give it a spin? Always remember to stay safe out there!</p>
+
+        <img class="screenshot" src="https://auo.github.io/images/lazy-turnip/search.png" />
+        <img class="screenshot" src="https://auo.github.io/images/lazy-turnip/installed.png" />
+        <img class="screenshot" src="https://auo.github.io/images/lazy-turnip/settings.png" />
 
         <h4>Additional info</h4>
         <p>
             Currently supporting Windows. If you are on a Mac, you would have to edit the source.
         </p>
-        <p>Contact <a href="https://twitter.com/@limebranch">@limebranch</a> if you have any question or ideas!</p>
+        <p>Contact <a href="https://twitter.com/@limebranch">@limebranch</a> if you have any questions or ideas!</p>
     </div>
 </body>
+<script>
+  document.getElementById('download').addEventListener('click',function(event) {
+    if(navigator.platform.toLowerCase() !== 'win32') {
+        event.preventDefault();
+        alert('are you on windows? :)');
+    }
+  })
+</script>
 </html>
