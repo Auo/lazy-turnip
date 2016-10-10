@@ -4,8 +4,6 @@
 }
 
 body, html {
-  margin: 0px;
-  padding:0px;
   background-color: #EAEBED;
   color:#6E8898;
   font-family:'Lato';
@@ -20,7 +18,8 @@ img {
 #holder {
   margin:0 auto;
   margin-top:50px;
-  width:400px;
+  max-width:400px;
+  width:100%;
 }
 
 #btn-holder {
