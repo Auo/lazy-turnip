@@ -153,7 +153,7 @@ const SearchViewModel = function (app) {
 			let results = []
 			let completedSearches = 0
 			var categoryMatches = self.categoryHolder.filter(cat => {
-				return cat.name.toLowerCase() == name.toLowerCase()
+				return cat.name.toLowerCase() == name.toLowerCase() || cat.name.toLowerCase() + 's' == name.toLowerCase()
 			})
 
 			for (let i = 0; i < categoryMatches.length; i++) {
