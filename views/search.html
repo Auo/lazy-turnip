@@ -2,15 +2,23 @@
 	<h1>Search</h1>
 
 	<form data-bind="submit: searchPortals">
+
 		<div id="search-field">
 			<span data-bind="visible: isSearching() == false"><i class="fa fa-search"></i></span>
 			<span data-bind="visible: isSearching() == true"><i class="fa fa-refresh fa-spin"></i></span>
-		<input placeholder="search" type="text" data-bind="textInput: search" />
-	</div>
+			<input placeholder="search" type="text" data-bind="textInput: search" />
+		</div>
 	</form>
+	<div id="class-search">
+		<button><i class="fa fa-chevron-down"></i> Classes</button>
+		
+			<ul id="class-menu" data-bind="foreach: classes">
+				<li data-bind="click:$parent.findAddonsInCategory"><i class="fa fa-chevron-right"></i><span data-bind="text: $data"></span></li>
+			</ul>
+	</div>
 
 	<div id="search-result-list" data-bind="foreach: { data: searchResults}">
-		<div  class="addon-info-item">
+		<div class="addon-info-item">
 			<div class="addon-info-status">
 				<div data-bind="visible: installed() == false">
 					<button data-bind="click:$parent.installAddon, visible: installing() == false"><i class="fa fa-cloud-download"></i></button>
@@ -20,6 +28,7 @@
 			</div>
 
 			<div class="addon-info">
+				
 				<span class="addon-info-name" data-bind="text: name"></span>
 				<span class="external-link"><a data-bind="click: $parent.showMoreInfo, attr:{'data-tooltip': 'visit ' + portal}"><i class="fa fa-info-circle"></i> info</a>
 			</div>
@@ -27,11 +36,11 @@
 				<span class="addon-info-header">Downloads: </span><span data-bind="text: downloads"></span>
 				<span class="addon-info-header">Author: </span><span data-bind="text: creator"></span>
 				<span class="addon-info-header">Category: </span><span data-bind="text: category"></span>
+			</div>
 		</div>
 	</div>
-</div>
 
-<!-- <span class="external-link" ><a data-tooltip="POW!"><i class="fa fa-info-circle"></i> info</a> -->
-<script>
+	<!-- <span class="external-link" ><a data-tooltip="POW!"><i class="fa fa-info-circle"></i> info</a> -->
+	<script>
 	ko.applyBindings(searchViewModel, document.getElementById('search-root'))
 </script>

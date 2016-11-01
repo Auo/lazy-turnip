@@ -111,6 +111,11 @@ body {
 	height:100%;
 	width: 100%;
 }
+#search-holder {
+	overflow:hidden;
+	min-width:700px;
+	width:100%;
+}
 
 #search-field input{
 	width:300px;
@@ -251,6 +256,54 @@ img.portal-logo-list {
 	font-size: 0.5em;
 }
 
+#class-search {
+	width:100px;
+	height:50px;
+
+}
+
+#class-search #class-menu {
+	position:absolute;
+	display: none;
+	list-style-type: none;
+	margin-top:0;
+	padding:10px;
+	font-size: 0.8em;
+	margin-top:5px;
+}
+
+#class-search:hover > #class-menu {
+	color: #B46DC7;
+	display: block;
+}
+
+#class-menu {
+	position:relative;
+	background-color:#2B2D42;
+	border-radius:3px;
+	min-width:140px;
+	height:auto;
+	z-index:3000;
+}
+
+#class-menu li {
+	color:#6E8898;
+	margin-top:5px;
+	padding-right:5px;
+	padding-left:5px;
+	cursor: pointer;
+
+}
+
+#class-menu li:hover {
+	color:#B46DC7;
+}
+
+#class-menu li::last-child {
+	padding-bottom:15px;
+}
+
+
 /* Hover style */
 [data-tooltip] {
   position: relative; /* magic */
@@ -268,7 +321,6 @@ img.portal-logo-list {
   left: 50%;
   margin-left: -5px;
   width: 0;
-  /*border-top: 5px solid #000;*/
   border-top: 5px solid hsla(0, 0%, 20%, 0.9);
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
