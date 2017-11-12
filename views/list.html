@@ -1,28 +1,36 @@
 <div id="list-root">
 	<h1>Addons</h1>
 
-	<div id="installed-addon-pane"  data-bind="visible: installedAddons().length > 0">
+	<div id="installed-addon-pane" data-bind="visible: installedAddons().length > 0">
 		<h2>Installed addons</h2>
 
 		<div data-bind="foreach: installedAddons">
-			<div  class="addon-info-item">
+			<div class="addon-info-item">
 				<div class="addon-info-status">
-					<button data-bind="click: $parent.removeAddon"><i class="fa fa-trash"></i></button>
+					<button data-bind="click: $parent.removeAddon">
+						<i class="fa fa-trash"></i>
+					</button>
 				</div>
 				<div class="addon-info">
 					<span class="addon-info-name" data-bind="text: name"></span>
-					<span class="external-link"><a data-bind="click: $parent.showMoreInfo, attr:{'data-tooltip': 'visit ' + portal}"><i class="fa fa-info-circle"></i> info</a>
+					<span class="external-link">
+						<a data-bind="click: $parent.showMoreInfo, attr:{'data-tooltip': 'visit ' + portal}">
+							<i class="fa fa-info-circle"></i> info</a>
 				</div>
 				<div class="addon-info">
-					<span>Version: </span><span data-bind="text: version"></span>
+					<span>Version: </span>
+					<span data-bind="text: version"></span>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div id="update-addon-pane">
-		<button data-bind="click: checkForUpdates, visible: checkingForUpdates() == false"><i class="fa fa-refresh"></i> Check for updates</button>
-		<div class="update-panel-button" data-bind="visible: checkingForUpdates() == true"><i class="fa fa-refresh fa-spin"></i></div>
+		<button data-bind="click: checkForUpdates, visible: checkingForUpdates() == false">
+			<i class="fa fa-refresh"></i> Check for updates</button>
+		<div class="update-panel-button" data-bind="visible: checkingForUpdates() == true">
+			<i class="fa fa-refresh fa-spin"></i>
+		</div>
 
 		<div data-bind="visible: possibleUpdates().length > 0">
 			<table>
@@ -33,14 +41,20 @@
 				</tbody>
 			</table>
 
-			<button data-bind="click: updateAddons, visible: updating() == false"><i class="fa fa-arrow-up"></i> Update</button>
-			<div class="update-panel-button" data-bind="visible: updating() == true"><i class="fa fa-refresh fa-spin"></i></div>
+			<button data-bind="click: updateAddons, visible: updating() == false">
+				<i class="fa fa-arrow-up"></i> Update</button>
+			<div class="update-panel-button" data-bind="visible: updating() == true">
+				<i class="fa fa-refresh fa-spin"></i>
+			</div>
 		</div>
 
 		<h2>Scan local</h2>
 		<p> If you have installed addons manually, scan the folder to add them to the program</p>
-		<button data-bind="visible: scanning() == false, click: scanAddonFolder"><i class="fa fa-hdd-o"></i> Scan local folder for addons</button>
-		<div class="update-panel-button" data-bind="visible: scanning() == true"><i class="fa fa-refresh fa-spin"></i></div>
+		<button data-bind="visible: scanning() == false, click: scanAddonFolder">
+			<i class="fa fa-hdd-o"></i> Scan local folder for addons</button>
+		<div class="update-panel-button" data-bind="visible: scanning() == true">
+			<i class="fa fa-refresh fa-spin"></i>
+		</div>
 	</div>
 </div>
 

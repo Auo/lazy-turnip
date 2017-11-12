@@ -1,7 +1,5 @@
 <img src="https://auo.github.io/images/lazy-turnip/logo.png" alt="logo"/>
 
-WARNING: THIS CURRENTLY DOESN'T WORK SINCE CURSE CHANGED THEIR SITE. PR WELCOME!
-
 # Lazy Turnip
 This is a world of warcraft addon manager that uses wowinterface and curse for getting addons.
 

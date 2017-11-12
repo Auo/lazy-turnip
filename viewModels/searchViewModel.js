@@ -51,7 +51,6 @@ const SearchViewModel = function (app) {
 			addons.forEach(add => {
 				add.installing = ko.observable(false)
 				add.installed = ko.observable(false)
-				if(add.creator == '') { add.creator = 'unkown' }
 				self.searchResults.push(add)
 			})
 

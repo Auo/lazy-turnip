@@ -3,3 +3,4 @@ node_modules
 app/lib/config.json
 app/config.json
 config.json
+package-lock.json
