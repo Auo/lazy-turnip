@@ -69,6 +69,6 @@ app.on('ready', () => {
 
   //We should check if there is a new version available.
 	//For now, let's not check since the server isn't running anymore (uncomment this if you want auto-update)
-	//updater();
+	updater();
 
 });
