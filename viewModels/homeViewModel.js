@@ -26,11 +26,9 @@ const HomeViewModel = function(app) {
 	}
 
 	this.openFolder = function() {
-
 		app.storage.getConfig(config=> {
 			shell.openItem(config.addonfolder)
 		})
-
 	}
 
 	this.visitProject = function() {
@@ -43,7 +41,6 @@ const HomeViewModel = function(app) {
 		})
 		this.folderChangeCallback = cb
 	}
-
 }
 
 module.exports =  function(app) { return new HomeViewModel(app) }

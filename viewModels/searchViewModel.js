@@ -2,11 +2,11 @@ const ko = require('knockout')
 const shell = require('electron').shell
 
 const SearchViewModel = function (app) {
-
 	app.on('search-completed', addons => {
 		addons.forEach(add => {
 			add.installing = ko.observable(false)
 			add.installed = ko.observable(false)
+			add.downloads = add.downloads.toLocaleString()
 
 			this.searchResults.push(add)
 		})
@@ -145,6 +145,7 @@ const SearchViewModel = function (app) {
 			}
 		})
 	}
+
 	this.getAddonsByCategory = function (name, cb) {
 		const self = this;
 

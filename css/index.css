@@ -176,7 +176,6 @@ img.portal-logo-list {
 	margin-top:30px;
 }
 
-
 .addon-info-item, .addon-detailed-info {
 	float:left;
 	height: auto;
@@ -185,12 +184,10 @@ img.portal-logo-list {
 	margin-bottom: 10px;
 }
 
-
 .addon-info-status {
 	display: block;
 	float:left;
 	position:relative;
-	top: 10px;
 }
 .addon-info  {
 	display: block;
@@ -204,12 +201,12 @@ img.portal-logo-list {
 	margin-left:5px;
 }
 .addon-info-name {
-	font-size: bold;
-	font-size: 1.2em;
+	font-weight: bold;
+	font-size: 1.1em;
 }
 
 .addon-info-header {
-	font-weight: bold;
+	font-size: 0.9em;
 }
 
 .external-link:hover {
@@ -232,6 +229,7 @@ img.portal-logo-list {
 	width:100%;
 	text-align: center;
 }
+
 #additional-info ul {
 
 	margin:0 auto;
@@ -239,18 +237,22 @@ img.portal-logo-list {
 	padding:0px;
 	list-style-type: none;
 }
+
 #additional-info ul a {
 	display: inline-block;
 	text-decoration: none;
 	color:inherit;
 }
+
 #additional-info ul a:hover {
 	color: #B46DC7;
 }
+
 .disable-select {
 	user-select:none;
 	-webkit-user-select:none;
 }
+
 #version-info {
 	font-size: 0.5em;
 }

@@ -23,9 +23,6 @@ const TitlebarViewModel = function(app) {
     const window = remote.getCurrentWindow()
     window.close()
   }
-
-
-
 }
 
 module.exports = function(app) { return new TitlebarViewModel(app) }
