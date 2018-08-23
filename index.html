@@ -31,51 +31,43 @@
 		</div>
 	</body>
 	<script>
-		const $ = jQuery = require('jquery')
-		const app = require('./lib/app')
+		const $ = jQuery = require('jquery');
+		const app = require('./lib/app');
 
 		//used by the views, knockout
 		const ko = require('knockout')
-		const homeViewModel = require('./viewModels/homeViewModel')(app)
-		const searchViewModel = require('./viewModels/searchViewModel')(app)
-		const listViewModel = require('./viewModels/listViewModel')(app)
-		const titlebarViewModel = require('./viewModels/titlebarViewModel')(app)
+		const homeViewModel = require('./viewModels/homeViewModel')(app);
+		const searchViewModel = require('./viewModels/searchViewModel')(app);
+		const listViewModel = require('./viewModels/listViewModel')(app);
+		const titlebarViewModel = require('./viewModels/titlebarViewModel')(app);
 
+		ko.applyBindings(titlebarViewModel, document.getElementById('top-bar'));
 
-		ko.applyBindings(titlebarViewModel, document.getElementById('top-bar'))
-
-		listViewModel.init()
-		searchViewModel.init()
+		listViewModel.init();
+		searchViewModel.init();
 
 		homeViewModel.init(() => {
 			//re-init when folder changes.
-			searchViewModel.init()
-			listViewModel.init()
-		})
+			searchViewModel.init();
+			listViewModel.init();
+		});
 
-		app.on('rendered', rendered => { $('#main').html(rendered) })
-
-		const showContent = (view) => { app.emit('view-selected', view)	}
+		app.on('rendered', rendered => $('#main').html(rendered));
+		const showContent = (view) => app.emit('view-selected', view);
 
 		$(() => {
 			app.storage.getConfig(config => {
-				if(app.storage.missingConfig(config)) {
-					showContent('home')
-				} else {
-					showContent('search')
-				}
+				if (app.storage.missingConfig(config)) showContent('home')
+				else showContent('search')
 
 				$('.nav').on('click', event => {
 					event.preventDefault()
 					app.storage.getConfig(config => {
-						if(app.storage.missingConfig(config)) {
-							return
-						} else {
-							showContent(event.currentTarget.id)
-						}
-					})
-				})
-			})
-		})
+						if (app.storage.missingConfig(config)) return;
+						else showContent(event.currentTarget.id);
+					});
+				});
+			});
+		});
 	</script>
 </html>
