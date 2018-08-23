@@ -1,83 +1,77 @@
-const ko = require('knockout')
-const shell = require('electron').shell
+const ko = require('knockout');
+const shell = require('electron').shell;
 
+class ListViewModel {
+	constructor(app) {
+		this.app = app;
+		this.installedAddons = ko.observableArray([]);
+		this.possibleUpdates = ko.observableArray([]);
+		this.checkingForUpdates = ko.observable(false);
+		this.updating = ko.observable(false);
+		this.scanning = ko.observable(false);
 
-const ListViewModel = function (app) {
-	this.installedAddons = ko.observableArray([])
-	this.possibleUpdates = ko.observableArray([])
-	this.checkingForUpdates = ko.observable(false)
-	this.updating = ko.observable(false)
-	this.scanning = ko.observable(false)
+		app.on('installation-completed', () => this.getInstalledAddons());
 
-	app.on('installation-completed', data => {
-		this.getInstalledAddons()
-	})
+		app.on('delete-completed', () => this.getInstalledAddons());
 
-	app.on('delete-completed', data => {
-		this.getInstalledAddons()
-	})
+		app.on('update-check-completed', data => {
+			this.possibleUpdates.removeAll();
+			data.forEach(add => this.possibleUpdates.push(add));
+			this.checkingForUpdates(false);
+		});
 
-	app.on('update-check-completed', data => {
-		this.possibleUpdates.removeAll()
-		data.forEach(add => { this.possibleUpdates.push(add) })
-		this.checkingForUpdates(false)
-	})
+		app.on('update-addons-completed', () => {
+			this.possibleUpdates.removeAll();
+			this.getInstalledAddons();
+		});
+	}
 
-	app.on('update-addons-completed', () => {
-		this.possibleUpdates.removeAll()
-		this.getInstalledAddons()
-	})
-
-	this.getInstalledAddons = function (cb) {
-		app.getManager(manager => {
-			if (!manager) { return }
+	getInstalledAddons(cb) {
+		this.app.getManager(manager => {
+			if (!manager) return;
 			manager.listAddons(addons => {
 
-				this.installedAddons.removeAll()
-				addons.forEach(add => { this.installedAddons.push(add) })
+				this.installedAddons.removeAll();
+				addons.forEach(add => this.installedAddons.push(add));
 
-				if (cb) {
-					return cb()
-				}
-			})
-		})
+				if (cb) return cb();
+			});
+		});
 	}
 
-	this.scanAddonFolder = function () {
-		this.scanning(true)
-		app.getManager(manager => {
+	scanAddonFolder() {
+		this.scanning(true);
+		this.app.getManager(manager => {
 			if (!manager) {
-				this.scanning(false)
-				return
+				this.scanning(false);
+				return;
 			}
-			manager.scanAddonFolder((err, info) => {
-				this.getInstalledAddons(() => {
-					this.scanning(false)
-				})
-			})
-		})
+
+			manager.scanAddonFolder(() => this.getInstalledAddons(() => this.scanning(false)));
+		});
 	}
 
-	this.removeAddon = function () {
-		app.emit('delete-addon', this)
+	removeAddon() {
+		this.app.emit('delete-addon', this);
 	}
 
-	this.checkForUpdates = function () {
-		this.checkingForUpdates(true)
-		app.emit('check-for-updates')
-	}
-	this.showMoreInfo = function () {
-		shell.openExternal(this.link)
+	checkForUpdates() {
+		this.checkingForUpdates(true);
+		this.app.emit('check-for-updates');
 	}
 
-	this.updateAddons = function () {
-		this.updating(true)
-		app.emit('update-addons', this.possibleUpdates())
+	showMoreInfo() {
+		shell.openExternal(this.link);
 	}
 
-	this.init = function () {
-		this.getInstalledAddons()
+	updateAddons() {
+		this.updating(true);
+		this.app.emit('update-addons', this.possibleUpdates());
+	}
+
+	init() {
+		this.getInstalledAddons();
 	}
 }
 
-module.exports = function (app) { return new ListViewModel(app) }
+module.exports = (app) => new ListViewModel(app);

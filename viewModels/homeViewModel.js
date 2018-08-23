@@ -1,46 +1,40 @@
-const ko = require('knockout')
-const {shell} = require('electron')
+const ko = require('knockout');
+const { dialog } = require('electron').remote;
+const { shell } = require('electron');
 
-const HomeViewModel = function(app) {
-	var self = this
-	var {dialog} = require('electron').remote
-	this.isConfigMissing = ko.observable(false)
-	this.folderChangeCallback = null
-	this.version = ko.observable(require('electron').remote.app.getVersion())
-
-	this.selectFolder = function() {
-		const directories = dialog.showOpenDialog({ properties: ['openDirectory'] })
-
-		if(!!directories) {
-			app.storage.getConfig(config => {
-					config.addonfolder = directories[0]
-					app.storage.setConfig(config, () => {
-							this.isConfigMissing(false)
-
-							if(this.folderChangeCallback != null && typeof this.folderChangeCallback == 'function') {
-								this.folderChangeCallback()
-							}
-					})
-			})
-		}
+class HomeViewModel {
+	constructor(app) {
+		this.app = app;
+		this.isConfigMissing = ko.observable(false);
+		this.folderChangeCallback = null;
+		this.version = ko.observable(require('electron').remote.app.getVersion());
 	}
 
-	this.openFolder = function() {
-		app.storage.getConfig(config=> {
-			shell.openItem(config.addonfolder)
-		})
+	selectFolder() {
+		const directories = dialog.showOpenDialog({ properties: ['openDirectory'] });
+
+		if (!!directories)
+			this.app.storage.getConfig(config => {
+				config.addonfolder = directories[0];
+				this.app.storage.setConfig(config, () => {
+					this.isConfigMissing(false);
+					if (this.folderChangeCallback != null && typeof this.folderChangeCallback == 'function') this.folderChangeCallback();
+				});
+			});
 	}
 
-	this.visitProject = function() {
-		shell.openExternal('https://github.com/auo/lazy-turnip')
+	openFolder() {
+		this.app.storage.getConfig(config => shell.openItem(config.addonfolder));
 	}
 
-	this.init = function(cb) {
-		app.storage.getConfig(config => {
-			self.isConfigMissing(app.storage.missingConfig(config))
-		})
-		this.folderChangeCallback = cb
+	visitProject() {
+		shell.openExternal('https://github.com/auo/lazy-turnip');
+	}
+
+	init(cb) {
+		this.app.storage.getConfig(config => this.isConfigMissing(this.app.storage.missingConfig(config)));
+		this.folderChangeCallback = cb;
 	}
 }
 
-module.exports =  function(app) { return new HomeViewModel(app) }
+module.exports = (app) => new HomeViewModel(app);
