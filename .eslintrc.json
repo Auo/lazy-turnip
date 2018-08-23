@@ -11,16 +11,25 @@
 		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
 		"curly": ["error", "multi"],
-		"prefer-arrow-callback":"error",
-		"arrow-body-style":["error", "as-needed"],
-		"brace-style":"error",
-		"func-style":["warn", "declaration", { "allowArrowFunctions": true }],
-		"key-spacing": ["error", { "afterColon": true, "mode": "strict" }],
+		"prefer-arrow-callback": "error",
+		"arrow-body-style": ["error", "as-needed"],
+		"brace-style": "error",
+		"func-style": ["warn", "declaration", {
+			"allowArrowFunctions": true
+		}],
+		"key-spacing": ["error", {
+			"afterColon": true,
+			"mode": "strict"
+		}],
 		"object-curly-spacing": ["error", "always"],
 		"no-trailing-spaces": "error",
 		"no-multi-spaces": "error",
-		"no-multiple-empty-lines":"error",
-		"no-extra-boolean-cast":"warn",
-		"no-console":"warn"
+		"no-multiple-empty-lines": "error",
+		"no-extra-boolean-cast": "warn",
+		"no-console": "warn",
+		"max-len": ["warn", 120],
+		"prefer-const": "warn",
+		"no-var": "error"
+
 	}
 }

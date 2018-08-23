@@ -18,7 +18,8 @@ class HomeViewModel {
 				config.addonfolder = directories[0];
 				this.app.storage.setConfig(config, () => {
 					this.isConfigMissing(false);
-					if (this.folderChangeCallback != null && typeof this.folderChangeCallback == 'function') this.folderChangeCallback();
+					if (this.folderChangeCallback != null && typeof this.folderChangeCallback == 'function')
+						this.folderChangeCallback();
 				});
 			});
 	}

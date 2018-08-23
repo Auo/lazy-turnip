@@ -197,17 +197,18 @@ img.portal-logo-list {
 }
 
 .addon-info, .addon-info-status {
-	margin-top:5px;
+	/* margin-top:5px; */
 	margin-left:5px;
 }
 .addon-info-name {
 	font-weight: bold;
-	font-size: 1.1em;
 }
 
-.addon-info-header {
+.addon-info-header, .addon-info-sub-info {
 	font-size: 0.9em;
 }
+
+
 
 .external-link:hover {
 	cursor: pointer !important;

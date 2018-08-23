@@ -85,7 +85,7 @@ class SearchViewModel {
 
 
 	installAddon() {
-		var data = this;
+		const data = this;
 		data.installing(true);
 		this.app.emit('install-addon', data);
 	}
@@ -117,7 +117,10 @@ class SearchViewModel {
 			for (let i = 0; i < p.length; i++)
 				manager.portals[p[i]].getCategories((err, categories) => {
 					completedSearches++;
-					var classCategory = categories.filter(cat => cat.name == 'Class & Role Specific' || cat.name == 'Class');
+					const classCategory = categories.filter(cat =>
+						cat.name == 'Class & Role Specific' ||
+						cat.name == 'Class');
+
 					if (classCategory.length > 0) results = results.concat(classCategory[0].subCategories);
 					if (completedSearches == p.length) return cb(results);
 				});
@@ -128,14 +131,17 @@ class SearchViewModel {
 		this.app.getManager(manager => {
 			let results = [];
 			let completedSearches = 0;
-			var categoryMatches = this.categoryHolder.filter(cat => cat.name.toLowerCase() == name.toLowerCase() || cat.name.toLowerCase() + 's' == name.toLowerCase());
+			const categoryMatches = this.categoryHolder.filter(cat =>
+				cat.name.toLowerCase() == name.toLowerCase() ||
+				cat.name.toLowerCase() + 's' == name.toLowerCase());
 
 			for (let i = 0; i < categoryMatches.length; i++)
 				manager.portals[categoryMatches[i].portal].getAddonsFromCategory(categoryMatches[i], (err, addons) => {
 					completedSearches++;
 
 					results = results.concat(addons);
-					if (completedSearches == categoryMatches.length) cb(results.sort((a, b) => b.downloads - a.downloads));
+					if (completedSearches == categoryMatches.length)
+						cb(results.sort((a, b) => b.downloads - a.downloads));
 				});
 		});
 	}
