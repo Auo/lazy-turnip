@@ -1,6 +1,6 @@
 const ko = require('knockout');
 const shell = require('electron').shell;
-
+let self = null;
 class SearchViewModel {
 	constructor(app) {
 		this.app = app;
@@ -8,6 +8,7 @@ class SearchViewModel {
 		this.search = ko.observable('');
 		this.searchResults = ko.observableArray([]);
 		this.installedAddons = ko.observableArray([]);
+
 		this.isSearching = ko.observable(false);
 		this.categoryHolder = [];
 		this.classes = ko.observableArray([
@@ -47,6 +48,8 @@ class SearchViewModel {
 			this.verifyInstalledAddons();
 		});
 		this.app.on('delete-completed', () => this.verifyInstalledAddons());
+
+		self = this;
 	}
 
 	showMoreInfo() {
@@ -54,22 +57,23 @@ class SearchViewModel {
 	}
 
 	findAddonsInCategory() {
-		if (this.isSearching()) return;
+		if (self.isSearching()) return;
 
-		this.isSearching(true);
-		this.search('');
-		this.searchResults.removeAll();
+		self.isSearching(true);
+		self.search('');
+		self.searchResults.removeAll();
 
 		const cat = arguments[1].target.textContent;
 
-		this.getAddonsByCategory(cat, addons => {
+		self.getAddonsByCategory(cat, addons => {
 			addons.forEach(add => {
 				add.installing = ko.observable(false);
 				add.installed = ko.observable(false);
-				this.searchResults.push(add);
+				add.downloads = add.downloads.toLocaleString();
+				self.searchResults.push(add);
 			});
 
-			this.isSearching(false);
+			self.isSearching(false);
 		});
 	}
 
@@ -77,7 +81,7 @@ class SearchViewModel {
 		this.getInstalledAddons(() => {
 			for (let i = 0; i < this.searchResults().length; i++) {
 				const sr = this.searchResults()[i];
-				let installed = this.installedAddons().filter(ia => ia.name == sr.name && ia.portal == sr.portal);
+				const installed = this.installedAddons().filter(ia => ia.name == sr.name && ia.portal == sr.portal);
 				this.searchResults()[i].installed(installed.length > 0);
 			}
 		});
@@ -87,13 +91,13 @@ class SearchViewModel {
 	installAddon() {
 		const data = this;
 		data.installing(true);
-		this.app.emit('install-addon', data);
+		self.app.emit('install-addon', data);
 	}
 
 	searchPortals() {
-		this.searchResults.removeAll();
-		this.isSearching(true);
-		this.app.emit('search-for-addon', this.search());
+		self.searchResults.removeAll();
+		self.isSearching(true);
+		self.app.emit('search-for-addon', self.search());
 	}
 
 	getInstalledAddons(cb) {

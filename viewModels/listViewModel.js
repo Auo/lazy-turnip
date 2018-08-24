@@ -1,5 +1,6 @@
 const ko = require('knockout');
 const shell = require('electron').shell;
+let self = null;
 
 class ListViewModel {
 	constructor(app) {
@@ -24,6 +25,8 @@ class ListViewModel {
 			this.possibleUpdates.removeAll();
 			this.getInstalledAddons();
 		});
+
+		self = this;
 	}
 
 	getInstalledAddons(cb) {
@@ -40,19 +43,19 @@ class ListViewModel {
 	}
 
 	scanAddonFolder() {
-		this.scanning(true);
-		this.app.getManager(manager => {
+		self.scanning(true);
+		self.app.getManager(manager => {
 			if (!manager) {
-				this.scanning(false);
+				self.scanning(false);
 				return;
 			}
 
-			manager.scanAddonFolder(() => this.getInstalledAddons(() => this.scanning(false)));
+			manager.scanAddonFolder(() => self.getInstalledAddons(() => self.scanning(false)));
 		});
 	}
 
 	removeAddon() {
-		this.app.emit('delete-addon', this);
+		self.app.emit('delete-addon', this);
 	}
 
 	checkForUpdates() {
