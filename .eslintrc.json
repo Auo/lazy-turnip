@@ -25,7 +25,7 @@
 		"no-trailing-spaces": "error",
 		"no-multi-spaces": "error",
 		"no-multiple-empty-lines": "error",
-		"no-extra-boolean-cast": "warn",
+		"no-extra-boolean-cast": "off",
 		"no-console": "warn",
 		"max-len": ["warn", 120],
 		"prefer-const": "warn",

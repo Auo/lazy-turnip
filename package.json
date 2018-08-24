@@ -7,11 +7,11 @@
   "repository": "auo/lazy-turnip",
   "author": {
     "name": "Andreas Lindgren",
-    "email": "",
+    "email": "andreas.lindgren@outlook.com",
     "url": "https://github.com/auo/lazy-turnip"
   },
   "scripts": {
-    "test": "xo",
+    "lint": "eslint .",
     "start": "electron .",
     "build": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --all --icon=images\\logo.ico",
     "build-backup": "electron-packager . --out=dist --app-version=%npm_package_version% --prune --asar --overwrite --all",
@@ -30,28 +30,21 @@
     "electron"
   ],
   "dependencies": {
-    "electron-debug": "^1.0.0",
-    "electron-json-storage": "^2.0.0",
-    "electron-reload": "1.0.2",
+    "electron-debug": "^2.0.0",
+    "electron-json-storage": "^4.1.1",
+    "electron-reload": "^1.2.5",
     "electron-squirrel-startup": "^1.0.0",
-    "jquery": "^3.1.0",
-    "jsonfile": "^2.3.1",
-    "knockout": "^3.4.0",
+    "jquery": "^3.3.1",
+    "jsonfile": "^4.0.0",
+    "knockout": "^3.4.2",
     "node-wow-addon": "git+https://github.com/Auo/node-wow-addon.git#v1.0.2"
   },
   "devDependencies": {
-    "devtron": "^1.1.0",
-    "electron": "^1.0.1",
-    "electron-builder": "^6.4.0",
-    "electron-packager": "^7.0.0",
-    "xo": "^0.16.0"
-  },
-  "xo": {
-    "esnext": true,
-    "envs": [
-      "node",
-      "browser"
-    ]
+    "devtron": "^1.4.0",
+    "electron": "^2.0.8",
+    "electron-builder": "^20.28.2",
+    "electron-packager": "^12.1.1",
+    "eslint": "^5.4.0"
   },
   "build": {
     "appId": "com.squirrel.auo.turnip",
