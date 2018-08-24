@@ -46,7 +46,8 @@
 				<span class="addon-info-name" data-bind="text: name"></span>
 				<span class="external-link">
 					<a data-bind="click: $parent.showMoreInfo, attr:{'data-tooltip': 'visit ' + portal}">
-						<i class="fa fa-info-circle"></i></a>
+						<i class="fa fa-info-circle"></i>
+					</a>
 			</div>
 			<div class="addon-info">
 				<span class="addon-info-header">Downloads: </span>
@@ -57,5 +58,5 @@
 		</div>
 	</div>
 	<script>
-		ko.applyBindings(searchViewModel, document.getElementById('search-root'))
+		ko.applyBindings(searchViewModel, document.getElementById('search-root'));
 	</script>

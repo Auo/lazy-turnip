@@ -57,8 +57,8 @@
 
 		$(() => {
 			app.storage.getConfig(config => {
-				if (app.storage.missingConfig(config)) showContent('home')
-				else showContent('search')
+				if (app.storage.missingConfig(config)) showContent('home');
+				else showContent('search');
 
 				$('.nav').on('click', event => {
 					event.preventDefault()

@@ -19,7 +19,6 @@
 			<i class="fa fa-folder-open"></i> Open folder</button>
 	</div>
 
-
 	<div id="additional-info">
 		<ul>
 			<li>
@@ -29,13 +28,13 @@
 					</span>
 				</a>
 			</li>
-			<ul>
+		</ul>
 
-				<div id="version-info">
-					<span data-bind="text: version"></span>
-				</div>
+		<div id="version-info">
+			<span data-bind="text: version"></span>
+		</div>
 	</div>
 </div>
 <script>
-	ko.applyBindings(homeViewModel, document.getElementById('home-root'))
+	ko.applyBindings(homeViewModel, document.getElementById('home-root'));
 </script>
