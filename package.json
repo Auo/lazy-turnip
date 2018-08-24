@@ -15,7 +15,7 @@
     "start": "electron .",
     "build": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --all --icon=images\\logo.ico",
     "build-backup": "electron-packager . --out=dist --app-version=%npm_package_version% --prune --asar --overwrite --all",
-    "build-windows": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --platform=win32 --arch=x64 --icon=images\\turnip.ico",
+    "build-windows": "electron-packager . --out=dist --app-version=%npm_package_version% --asar --overwrite --platform=win32 --arch=x64 --icon=images\\logo.ico",
     "build-installer-windows": "build --win --x64",
     "pack-build": "npm run build-windows && npm run build-installer-windows"
   },
@@ -48,14 +48,11 @@
   },
   "build": {
     "appId": "com.squirrel.auo.turnip",
-    "category": "public.app-category.utilities",
-    "app-category-type": "public.app-category.utilities",
     "mac": {
       "icon": "images\\logo-large.icns"
     },
     "win": {
-      "icon": "images\\logo-large.ico",
-      "loadingGif": "images\\installing.gif"
+      "icon": "images\\logo-large.ico"
     }
   }
 }
