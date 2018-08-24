@@ -39,7 +39,7 @@ class SearchViewModel {
 		});
 
 		this.app.on('installation-completed', data => {
-			let matching = this.searchResults().filter(sr => sr.name == data.name && sr.portal == data.portal);
+			const matching = this.searchResults().filter(sr => sr.name == data.name && sr.portal == data.portal);
 
 			if (matching == null || matching.length == 0) return;
 
