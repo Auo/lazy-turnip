@@ -31,20 +31,20 @@
   ],
   "dependencies": {
     "electron-debug": "^2.0.0",
-    "electron-json-storage": "^4.1.1",
+    "electron-json-storage": "^4.1.6",
     "electron-reload": "^1.2.5",
     "electron-squirrel-startup": "^1.0.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.1",
     "jsonfile": "^4.0.0",
     "knockout": "^3.4.2",
-    "node-wow-addon": "git+https://github.com/Auo/node-wow-addon.git#v1.0.2"
+    "node-wow-addon": "git+https://github.com/Auo/node-wow-addon.git#1.0.3"
   },
   "devDependencies": {
     "devtron": "^1.4.0",
     "electron": "^2.0.8",
     "electron-builder": "^20.28.2",
     "electron-packager": "^12.1.1",
-    "eslint": "^5.4.0"
+    "eslint": "^6.0.1"
   },
   "build": {
     "appId": "com.squirrel.auo.turnip",
