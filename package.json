@@ -35,7 +35,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "jquery": "^3.4.1",
     "jsonfile": "^4.0.0",
-    "knockout": "^3.4.2",
+    "knockout": "^3.5.0",
     "node-wow-addon": "git+https://github.com/Auo/node-wow-addon.git#v1.0.5"
   },
   "devDependencies": {
