@@ -29,29 +29,27 @@ class ListViewModel {
 		self = this;
 	}
 
-	getInstalledAddons(cb) {
-		this.app.getManager(manager => {
-			if (!manager) return;
-			manager.listAddons(addons => {
+	async getInstalledAddons(cb) {
+		const manager = await this.app.getManager();
+		if (!manager) return;
 
-				this.installedAddons.removeAll();
-				addons.forEach(add => this.installedAddons.push(add));
+		manager.listAddons(addons => {
+			this.installedAddons.removeAll();
+			addons.forEach(add => this.installedAddons.push(add));
 
-				if (cb) return cb();
-			});
+			if (cb) return cb();
 		});
 	}
 
-	scanAddonFolder() {
+	async scanAddonFolder() {
 		self.scanning(true);
-		self.app.getManager(manager => {
-			if (!manager) {
-				self.scanning(false);
-				return;
-			}
+		const manager = await self.app.getManager();
+		if (!manager) {
+			self.scanning(false);
+			return;
+		}
 
-			manager.scanAddonFolder(() => self.getInstalledAddons(() => self.scanning(false)));
-		});
+		manager.scanAddonFolder(() => self.getInstalledAddons(() => self.scanning(false)));
 	}
 
 	removeAddon() {

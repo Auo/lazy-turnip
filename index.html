@@ -58,7 +58,7 @@
 
 		$(async () => {
 			const exists = await app.config.exists();
-			if (exists) showContent('settings'); // TODO: temp changed, should be search
+			if (exists) showContent('search');
 			else showContent('settings');
 				$('.nav').on('click', async event => {
 					event.preventDefault()
