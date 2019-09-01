@@ -1,31 +1,53 @@
 const ko = require('knockout');
 const { dialog } = require('electron').remote;
 const { shell } = require('electron');
+const path = require('path');
 
+let self = null;
 class SettingsViewModel {
 	constructor(app) {
 		this.app = app;
-		this.isConfigMissing = ko.observable(false);
+
 		this.folderChangeCallback = null;
 		this.version = ko.observable(require('electron').remote.app.getVersion());
+		this.folders = ko.observableArray([]);
+		this.selectedIndex = ko.observable(-1);
+
+		self = this;
 	}
 
-	selectFolder() {
-		const directories = dialog.showOpenDialog({ properties: ['openDirectory'] });
+	async activate(config) {
+		const ix = self.folders().findIndex(f => f.path == config.path);
 
-		if (!!directories)
-			this.app.storage.getConfig(config => {
-				config.addonfolder = directories[0];
-				this.app.storage.setConfig(config, () => {
-					this.isConfigMissing(false);
-					if (this.folderChangeCallback != null && typeof this.folderChangeCallback == 'function')
-						this.folderChangeCallback();
-				});
-			});
+		if (await self.app.config.setIndexAsActive(ix))
+			self.selectedIndex(ix);
+
+		self.folderChangeCallback();
 	}
 
-	openFolder() {
-		this.app.storage.getConfig(config => shell.openItem(config.addonfolder));
+	async delete(config) {
+		await self.app.config.removeLine(config);
+		const updConf = await self.app.config.get();
+
+		self.folders(updConf.folders);
+		self.selectedIndex(updConf.selected);
+	}
+
+	async newConfig() {
+		const data = await dialog.showOpenDialog({ properties: ['openDirectory'] });
+		if (data.canceled) return;
+
+		const dirPath = data.filePaths[0];
+		const name = path.parse(dirPath).base;
+
+		await this.app.config.addLine({ name, path: dirPath });
+
+		if (this.selectedIndex == -1) await this.app.config.setIndexAsActive(0);
+		this.folderChangeCallback();
+
+		const updConf = await this.app.config.get();
+		this.folders(updConf.folders);
+		this.selectedIndex(updConf.selected);
 	}
 
 	visitProject() {
@@ -33,7 +55,12 @@ class SettingsViewModel {
 	}
 
 	init(cb) {
-		this.app.storage.getConfig(config => this.isConfigMissing(this.app.storage.missingConfig(config)));
+		if (cb == null || cb == undefined) throw new Error('cb must be a function');
+
+		this.app.config.get().then(data => {
+			this.folders(data.folders);
+			this.selectedIndex(data.selected);
+		});
 		this.folderChangeCallback = cb;
 	}
 }

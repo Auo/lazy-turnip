@@ -35,7 +35,8 @@
 		const app = require('./lib/app');
 
 		//used by the views, knockout
-		const ko = require('knockout')
+		const ko = require('knockout');
+		// require('knockout-mapping');
 		const settingsViewModel = require('./viewModels/settingsViewModel')(app);
 		const searchViewModel = require('./viewModels/searchViewModel')(app);
 		const listViewModel = require('./viewModels/listViewModel')(app);
@@ -55,19 +56,15 @@
 		app.on('rendered', rendered => $('#main').html(rendered));
 		const showContent = (view) => app.emit('view-selected', view);
 
-		$(() => {
-			app.storage.getConfig(config => {
-				if (app.storage.missingConfig(config)) showContent('settings');
-				else showContent('search');
-
-				$('.nav').on('click', event => {
+		$(async () => {
+			const exists = await app.config.exists();
+			if (exists) showContent('settings'); // TODO: temp changed, should be search
+			else showContent('settings');
+				$('.nav').on('click', async event => {
 					event.preventDefault()
-					app.storage.getConfig(config => {
-						if (app.storage.missingConfig(config)) return;
-						else showContent(event.currentTarget.id);
-					});
+					const exists = await app.config.exists();
+					if (exists) showContent(event.currentTarget.id);
 				});
-			});
 		});
 	</script>
 </html>
