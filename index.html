@@ -37,10 +37,10 @@
 		//used by the views, knockout
 		const ko = require('knockout');
 		// require('knockout-mapping');
-		const settingsViewModel = require('./viewModels/settingsViewModel')(app);
-		const searchViewModel = require('./viewModels/searchViewModel')(app);
-		const listViewModel = require('./viewModels/listViewModel')(app);
-		const titlebarViewModel = require('./viewModels/titlebarViewModel')(app);
+		const settingsViewModel = require('./viewmodels/settings')(app);
+		const searchViewModel = require('./viewmodels/search')(app);
+		const listViewModel = require('./viewmodels/list')(app);
+		const titlebarViewModel = require('./viewmodels/titlebar')(app);
 
 		ko.applyBindings(titlebarViewModel, document.getElementById('top-bar'));
 
