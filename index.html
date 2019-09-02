@@ -22,7 +22,7 @@
 				<img src="images/logos/logo-187x187.png">
 				<ul>
 					<li><a href="#" id="search" class="nav"><i class="fa fa-search"></i></a></li>
-					<li><a href="#" id="list" class="nav"><i class="fa fa-hdd-o"></i></a></li>
+					<li><a href="#" id="addons" class="nav"><i class="fa fa-hdd-o"></i></a></li>
 					<li><a href="#" id="settings" class="nav"><i class="fa fa-cog"></i></a></li>
 				</ul>
 			</div>
@@ -39,18 +39,18 @@
 		// require('knockout-mapping');
 		const settingsViewModel = require('./viewmodels/settings')(app);
 		const searchViewModel = require('./viewmodels/search')(app);
-		const listViewModel = require('./viewmodels/list')(app);
+		const addonsViewModel = require('./viewmodels/addons')(app);
 		const titlebarViewModel = require('./viewmodels/titlebar')(app);
 
 		ko.applyBindings(titlebarViewModel, document.getElementById('top-bar'));
 
-		listViewModel.init();
+		addonsViewModel.init();
 		searchViewModel.init();
 
 		settingsViewModel.init(() => {
 			//re-init when folder changes.
 			searchViewModel.init();
-			listViewModel.init();
+			addonsViewModel.init();
 		});
 
 		app.on('rendered', rendered => $('#main').html(rendered));

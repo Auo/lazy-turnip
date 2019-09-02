@@ -2,7 +2,7 @@ const ko = require('knockout');
 const shell = require('electron').shell;
 let self = null;
 
-class ListViewModel {
+class AddonsViewModel {
 	constructor(app) {
 		this.app = app;
 		this.installedAddons = ko.observableArray([]);
@@ -75,4 +75,4 @@ class ListViewModel {
 	}
 }
 
-module.exports = (app) => new ListViewModel(app);
+module.exports = (app) => new AddonsViewModel(app);
