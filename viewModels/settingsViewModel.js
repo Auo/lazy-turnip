@@ -38,16 +38,23 @@ class SettingsViewModel {
 		if (data.canceled) return;
 
 		const dirPath = data.filePaths[0];
-		const name = path.parse(dirPath).base;
+		let name = path.parse(dirPath).base;
+
+		if (dirPath.indexOf('_retail_') > -1) {
+			name = 'retail';
+		} else if (dirPath.indexOf('_classic_') > -1) {
+			name = 'classic';
+		}
 
 		await this.app.config.addLine({ name, path: dirPath });
 
-		if (this.selectedIndex == -1) await this.app.config.setIndexAsActive(0);
-		this.folderChangeCallback();
+		if (this.selectedIndex() == -1) await this.app.config.setIndexAsActive(0);
 
 		const updConf = await this.app.config.get();
 		this.folders(updConf.folders);
 		this.selectedIndex(updConf.selected);
+
+		this.folderChangeCallback();
 	}
 
 	visitProject() {

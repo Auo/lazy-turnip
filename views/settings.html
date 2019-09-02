@@ -8,22 +8,27 @@
 	<div>
 		<div data-bind="foreach: folders">
 			<div>
-				<span style="font-weight: bold" data-bind="text: $data.name"></span>
 				<button data-bind="click: $parent.delete">
-					<i class="fa fa-trash"></i> Remove  
+					<i class="fa fa-trash"></i>  
 				</button>
+
+				<span style="font-weight: bold" data-bind="text: $data.name"></span>
 
 				<span data-bind="visible: $index() !== $parent.selectedIndex()">
 					<button data-bind="click: $parent.activate">
-						<i class="fa fa-folder"></i> Activate
+						<i class="fa fa-check-circle"></i> Activate
 					</button>
+				</span>
+
+				<span data-bind="visible: $index() == $parent.selectedIndex()">
+					Currently selected
 				</span>
 
 			</div>
 		</div>
 
 		<button data-bind="click: newConfig">
-			<i class="fa fa-plus"></i> New install dir
+			<i class="fa fa-plus"></i> New install directory
 		</button>
 	</div>
 

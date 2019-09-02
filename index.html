@@ -57,12 +57,12 @@
 		const showContent = (view) => app.emit('view-selected', view);
 
 		$(async () => {
-			const exists = await app.config.exists();
+			const exists = await app.config.hasFolderSetup();
 			if (exists) showContent('search');
 			else showContent('settings');
 				$('.nav').on('click', async event => {
 					event.preventDefault()
-					const exists = await app.config.exists();
+					const exists = await app.config.hasFolderSetup();
 					if (exists) showContent(event.currentTarget.id);
 				});
 		});
