@@ -1,0 +1,29 @@
+#version-info {
+	font-size: 0.5em;
+}
+
+#additional-info {
+	position:absolute;
+	bottom:5px;
+	left: -16px;
+	width:100%;
+	text-align: center;
+}
+
+#additional-info ul {
+
+	margin:0 auto;
+	margin:0px;
+	padding:0px;
+	list-style-type: none;
+}
+
+#additional-info ul a {
+	display: inline-block;
+	text-decoration: none;
+	color:inherit;
+}
+
+#additional-info ul a:hover {
+	color: #B46DC7;
+}

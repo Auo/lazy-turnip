@@ -9,7 +9,7 @@
 		<div data-bind="foreach: folders">
 			<div>
 				<button data-bind="click: $parent.delete">
-					<i class="fa fa-trash"></i>  
+					<i class="fa fa-trash"></i>
 				</button>
 
 				<span style="font-weight: bold" data-bind="text: $data.name"></span>
@@ -52,3 +52,5 @@
 <script>
 	ko.applyBindings(settingsViewModel, document.getElementById('settings-root'));
 </script>
+
+<link rel="stylesheet" href="./css/settings.css" />
