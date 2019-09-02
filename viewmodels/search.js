@@ -1,6 +1,7 @@
 const ko = require('knockout');
 const shell = require('electron').shell;
 let self = null;
+
 class SearchViewModel {
 	constructor(app) {
 		this.app = app;
