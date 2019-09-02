@@ -13,10 +13,9 @@
   "scripts": {
     "lint": "eslint .",
     "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all --icon=images\\logo.ico",
     "build-windows": "electron-packager . --out=dist --asar --overwrite --platform=win32 --arch=x64 --icon=images\\logo.ico",
-    "build-installer-windows": "build --win --x64",
-    "pack-build": "npm run build-windows && npm run build-installer-windows"
+    "build-installer-windows": "electron-builder build --win --x64",
+    "pack-build-windows": "npm run build-windows && npm run build-installer-windows"
   },
   "files": [
     "index.js",
