@@ -35,7 +35,7 @@
     "jquery": "^3.4.1",
     "jsonfile": "^5.0.0",
     "knockout": "^3.5.0",
-    "node-wow-addon": "git+https://github.com/Auo/node-wow-addon.git#v1.0.6"
+    "node-wow-addon": "git+https://github.com/Auo/node-wow-addon.git"
   },
   "devDependencies": {
     "devtron": "^1.4.0",
