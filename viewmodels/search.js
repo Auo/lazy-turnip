@@ -1,6 +1,7 @@
 const ko = require('knockout');
 const shell = require('electron').shell;
 let self = null;
+
 class SearchViewModel {
 	constructor(app) {
 		this.app = app;
@@ -101,7 +102,7 @@ class SearchViewModel {
 	}
 
 	getInstalledAddons(cb) {
-		this.app.getManager(manager => {
+		this.app.getManager().then(manager => {
 			if (!manager) return;
 			manager.listAddons(addons => {
 				this.installedAddons.removeAll();
@@ -112,7 +113,7 @@ class SearchViewModel {
 	}
 
 	getClassCategories(cb) {
-		this.app.getManager(manager => {
+		this.app.getManager().then(manager => {
 			if (!manager) return;
 			const p = manager.portals.availablePortals;
 			let results = [];
@@ -121,18 +122,22 @@ class SearchViewModel {
 			for (let i = 0; i < p.length; i++)
 				manager.portals[p[i]].getCategories((err, categories) => {
 					completedSearches++;
-					const classCategory = categories.filter(cat =>
-						cat.name == 'Class & Role Specific' ||
-						cat.name == 'Class');
 
-					if (classCategory.length > 0) results = results.concat(classCategory[0].subCategories);
+					if (categories != null) {
+						const classCategory = categories.filter(cat =>
+							cat.name == 'Class & Role Specific' ||
+							cat.name == 'Class');
+
+						if (classCategory.length > 0) results = results.concat(classCategory[0].subCategories);
+					}
 					if (completedSearches == p.length) return cb(results);
+
 				});
 		});
 	}
 
 	getAddonsByCategory(name, cb) {
-		this.app.getManager(manager => {
+		this.app.getManager().then(manager => {
 			let results = [];
 			let completedSearches = 0;
 			const categoryMatches = this.categoryHolder.filter(cat =>

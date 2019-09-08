@@ -22,8 +22,8 @@
 				<img src="images/logos/logo-187x187.png">
 				<ul>
 					<li><a href="#" id="search" class="nav"><i class="fa fa-search"></i></a></li>
-					<li><a href="#" id="list" class="nav"><i class="fa fa-hdd-o"></i></a></li>
-					<li><a href="#" id="home" class="nav"><i class="fa fa-cog"></i></a></li>
+					<li><a href="#" id="addons" class="nav"><i class="fa fa-hdd-o"></i></a></li>
+					<li><a href="#" id="settings" class="nav"><i class="fa fa-cog"></i></a></li>
 				</ul>
 			</div>
 
@@ -35,39 +35,36 @@
 		const app = require('./lib/app');
 
 		//used by the views, knockout
-		const ko = require('knockout')
-		const homeViewModel = require('./viewModels/homeViewModel')(app);
-		const searchViewModel = require('./viewModels/searchViewModel')(app);
-		const listViewModel = require('./viewModels/listViewModel')(app);
-		const titlebarViewModel = require('./viewModels/titlebarViewModel')(app);
+		const ko = require('knockout');
+		// require('knockout-mapping');
+		const settingsViewModel = require('./viewmodels/settings')(app);
+		const searchViewModel = require('./viewmodels/search')(app);
+		const addonsViewModel = require('./viewmodels/addons')(app);
+		const titlebarViewModel = require('./viewmodels/titlebar')(app);
 
 		ko.applyBindings(titlebarViewModel, document.getElementById('top-bar'));
 
-		listViewModel.init();
+		addonsViewModel.init();
 		searchViewModel.init();
 
-		homeViewModel.init(() => {
+		settingsViewModel.init(() => {
 			//re-init when folder changes.
 			searchViewModel.init();
-			listViewModel.init();
+			addonsViewModel.init();
 		});
 
 		app.on('rendered', rendered => $('#main').html(rendered));
 		const showContent = (view) => app.emit('view-selected', view);
 
-		$(() => {
-			app.storage.getConfig(config => {
-				if (app.storage.missingConfig(config)) showContent('home');
-				else showContent('search');
-
-				$('.nav').on('click', event => {
+		$(async () => {
+			const exists = await app.config.hasFolderSetup();
+			if (exists) showContent('search');
+			else showContent('settings');
+				$('.nav').on('click', async event => {
 					event.preventDefault()
-					app.storage.getConfig(config => {
-						if (app.storage.missingConfig(config)) return;
-						else showContent(event.currentTarget.id);
-					});
+					const exists = await app.config.hasFolderSetup();
+					if (exists) showContent(event.currentTarget.id);
 				});
-			});
 		});
 	</script>
 </html>

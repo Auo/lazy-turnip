@@ -1,0 +1,56 @@
+<div id="settings-root">
+	<h1>Settings</h1>
+
+	<div id="application-information">
+		<p>This is a tool for managing addons in World of Warcraft.</p>
+	</div>
+
+	<div>
+		<div data-bind="foreach: folders">
+			<div>
+				<button data-bind="click: $parent.delete">
+					<i class="fa fa-trash"></i>
+				</button>
+
+				<span style="font-weight: bold" data-bind="text: $data.name"></span>
+
+				<span data-bind="visible: $index() !== $parent.selectedIndex()">
+					<button data-bind="click: $parent.activate">
+						<i class="fa fa-check-circle"></i> Activate
+					</button>
+				</span>
+
+				<span data-bind="visible: $index() == $parent.selectedIndex()">
+					Currently selected
+				</span>
+
+			</div>
+		</div>
+
+		<button data-bind="click: newConfig">
+			<i class="fa fa-plus"></i> New install directory
+		</button>
+	</div>
+
+	<div id="additional-info">
+		<ul>
+			<li>
+				<a href="#" data-bind="click: visitProject">
+					<span data-tooltip="visit project page">
+						<i class="fa fa-github"></i>
+					</span>
+				</a>
+			</li>
+		</ul>
+
+		<div id="version-info">
+			<span data-bind="text: version"></span>
+		</div>
+	</div>
+</div>
+
+<script>
+	ko.applyBindings(settingsViewModel, document.getElementById('settings-root'));
+</script>
+
+<link rel="stylesheet" href="./css/settings.css" />

@@ -23,13 +23,16 @@ function onClosed() {
 
 function createMainWindow() {
 	const win = new electron.BrowserWindow({
+		webPreferences: {
+            nodeIntegration: true
+        },
 		width: 857,
 		height: 720,
 		icon: path.join(__dirname, 'images', 'logo.ico'),
-    minWidth: 200,
-    minHeight: 150,
-    titleBarStyle: 'hidden',
-    frame: os.platform() !== 'win32'
+		minWidth: 200,
+		minHeight: 150,
+		titleBarStyle: 'hidden',
+		frame: os.platform() !== 'win32'
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
@@ -42,19 +45,24 @@ app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') app.quit();
 });
 
-const shouldQuit = app.makeSingleInstance(() => {
-  // Someone tried to run a second instance, we should focus our window.
-  if (mainWindow) {
-    if (mainWindow.isMinimized()) mainWindow.restore();
-    mainWindow.focus();
-  }
-});
 
-if (shouldQuit) app.quit();
+const gotAppLock = app.requestSingleInstanceLock();
+if (!gotAppLock) {
+	app.quit();
+} else {
 
-app.on('ready', () => {
-	mainWindow = createMainWindow();
-  //We should check if there is a new version available.
-	//For now, let's not check since the server isn't running anymore (uncomment this if you want auto-update)
-	updater();
-});
+	app.on('second-instance', () => {
+		// Someone tried to run a second instance, we should focus our window.
+		if (mainWindow) {
+			if (mainWindow.isMinimized()) mainWindow.restore();
+			mainWindow.focus();
+		}
+	});
+
+	app.on('ready', () => {
+		mainWindow = createMainWindow();
+		//We should check if there is a new version available.
+		//For now, let's not check since the server isn't running anymore (uncomment this if you want auto-update)
+		updater();
+	});
+}

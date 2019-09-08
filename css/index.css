@@ -57,6 +57,7 @@ body {
 	color:#B46DC7;
 	margin-left: 0.3rem;
 }
+
 #side-nav a:hover {
 	color:#ecf0f1;
 }
@@ -66,6 +67,7 @@ body {
 	padding: 20px;
 	margin: 0px;
 }
+
 #side-nav li {
 	padding-bottom: 8px;
 }
@@ -91,18 +93,21 @@ body {
 }
 
 #top-bar-windows {
- float:right;
+ 	font-size: 0.8em;
+	float:right;
 }
 
 #top-bar-windows ul {
 	list-style-type: none;
 	margin:2px;
 }
+
 #top-bar-windows ul li {
 	display: inline-block;
 	margin-right: 7px;
 	-webkit-app-region:no-drag;
 }
+
 #top-bar-windows ul li span:hover {
 	color:#B46DC7;
 }
@@ -111,200 +116,11 @@ body {
 	height:100%;
 	width: 100%;
 }
-#search-holder {
-	overflow:hidden;
-	min-width:700px;
-	width:100%;
-}
-
-#search-field input{
-	width:300px;
-	height: 30px;
-	padding:5px;
-	padding-left:25px;
-	position:relative;
-	left: -15px;
-	border-radius: 5px;
-	border: 1px solid #fff;
-	color:#2B2D42;
-}
-#search-field input:focus {
-	border: 1px solid #B46DC7;
-	outline:none;
-}
-#search-field span {
-	color:#B46DC7;
-	position:relative;
-	z-index:1000;
-	left:10px;
-}
-
-button, .update-panel-button {
-	display:inline-block;
-	background-color:#2B2D42;
-	border-radius: 3px;
-	padding:10px;
-	border: 0px;
-	margin: 5px;
-	color:#6E8898;
-	font-size: 0.8em;
-	cursor: pointer;
-}
-button:hover, .update-panel-button:hover {
-	color:#B46DC7;
-}
-
-
-.update-panel-button {
-	cursor:no-drop;
-	width: 14px;
-	height: 14px;
-	text-align: center;
-}
-.update-panel-button i {
-	position:relative;
-	top:-2px;
-}
-
-
-img.portal-logo-list {
-	max-width: 50px;
- 	max-height:35px;
-}
-
-#search-result-list{
-	margin-top:30px;
-}
-
-.addon-info-item, .addon-detailed-info {
-	float:left;
-	height: auto;
-	width: 100%;
-	min-width: 700px;
-	margin-bottom: 10px;
-}
-
-.addon-info-status {
-	display: block;
-	float:left;
-	position:relative;
-}
-.addon-info  {
-	display: block;
-	float:left;
-	width: 80%;
-	min-width: 350px;
-}
-
-.addon-info, .addon-info-status {
-	/* margin-top:5px; */
-	margin-left:5px;
-}
-.addon-info-name {
-	font-weight: bold;
-}
-
-.addon-info-header, .addon-info-sub-info {
-	font-size: 0.9em;
-}
-
-
-
-.external-link:hover {
-	cursor: pointer !important;
-	color:#B46DC7;
-}
-
-#update-addon-pane {
-	margin-top:50px;
-}
-
-#installed-addon-pane {
-	overflow:hidden;
-}
-
-#additional-info {
-	position:absolute;
-	bottom:5px;
-	left: -16px;
-	width:100%;
-	text-align: center;
-}
-
-#additional-info ul {
-
-	margin:0 auto;
-	margin:0px;
-	padding:0px;
-	list-style-type: none;
-}
-
-#additional-info ul a {
-	display: inline-block;
-	text-decoration: none;
-	color:inherit;
-}
-
-#additional-info ul a:hover {
-	color: #B46DC7;
-}
 
 .disable-select {
 	user-select:none;
 	-webkit-user-select:none;
 }
-
-#version-info {
-	font-size: 0.5em;
-}
-
-#class-search {
-	width:100px;
-	height:50px;
-
-}
-
-#class-search #class-menu {
-	position:absolute;
-	display: none;
-	list-style-type: none;
-	margin-top:0;
-	padding:10px;
-	font-size: 0.8em;
-	margin-top:5px;
-}
-
-#class-search:hover > #class-menu {
-	color: #B46DC7;
-	display: block;
-}
-
-#class-menu {
-	position:relative;
-	background-color:#2B2D42;
-	border-radius:3px;
-	min-width:140px;
-	height:auto;
-	z-index:3000;
-}
-
-#class-menu li {
-	color:#6E8898;
-	margin-top:5px;
-	padding-right:5px;
-	padding-left:5px;
-	cursor: pointer;
-
-}
-
-#class-menu li:hover {
-	color:#B46DC7;
-}
-
-#class-menu li::last-child {
-	padding-bottom:15px;
-}
-
 
 /* Hover style */
 [data-tooltip] {
@@ -353,3 +169,72 @@ img.portal-logo-list {
   visibility: visible;
 }
 /* end of tooltip */
+
+/* shared between search and addons */
+.addon-info-item, .addon-detailed-info {
+	float:left;
+	height: auto;
+	width: 100%;
+	min-width: 700px;
+	margin-bottom: 10px;
+}
+
+.addon-info-status {
+	display: block;
+	float:left;
+	position:relative;
+}
+.addon-info  {
+	display: block;
+	float:left;
+	width: 80%;
+	min-width: 350px;
+}
+
+.addon-info, .addon-info-status {
+	margin-left:5px;
+}
+.addon-info-name {
+	font-weight: bold;
+}
+
+.addon-info-header, .addon-info-sub-info {
+	font-size: 0.9em;
+}
+
+button, .update-panel-button {
+	display:inline-block;
+	background-color:#2B2D42;
+	border-radius: 3px;
+	padding:10px;
+	border: 0px;
+	margin: 5px;
+	color:#6E8898;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+button:hover, .update-panel-button:hover {
+	color:#B46DC7;
+}
+
+.update-panel-button {
+	cursor:no-drop;
+	width: 14px;
+	height: 14px;
+	text-align: center;
+}
+
+.update-panel-button i {
+	position:relative;
+	top:-2px;
+}
+/* end of shared */
+
+/* shared between settings and search */ 
+.external-link:hover {
+	cursor: pointer !important;
+	color:#B46DC7;
+}
+
+/* end of shared */ 
