@@ -93,7 +93,8 @@ body {
 }
 
 #top-bar-windows {
- float:right;
+ 	font-size: 0.8em;
+	float:right;
 }
 
 #top-bar-windows ul {
