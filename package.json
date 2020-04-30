@@ -32,7 +32,7 @@
     "electron-json-storage": "^4.1.6",
     "electron-reload": "^1.2.5",
     "electron-squirrel-startup": "^1.0.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsonfile": "^5.0.0",
     "knockout": "^3.5.0",
     "node-wow-addon": "git+https://github.com/Auo/node-wow-addon.git#v1.0.7"
