@@ -1,7 +1,7 @@
 <img src="https://auo.github.io/images/lazy-turnip/logo.png" alt="logo"/>
 
 # Lazy Turnip
-**⚠ I'm not currently not activly maintaining this project due to lack of time**
+**⚠ I'm not maintaining this project due to lack of time**
 
 This is a World of Warcraft addon manager that uses Wowinterface and Curse for installing and updating addons.
 
