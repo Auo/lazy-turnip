@@ -2,6 +2,7 @@
 
 # Lazy Turnip
 **⚠ I'm not currently not activly maintaining this project due to lack of time**
+
 This is a World of Warcraft addon manager that uses Wowinterface and Curse for installing and updating addons.
 
 I'm not in any way affiliated with Blizzard Entertainment, and neither is this program.
